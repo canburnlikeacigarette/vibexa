@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -521,7 +521,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
 <!-- MOBILE HEADER (only visible on mobile) -->
 <div id="sp-mobile-header">
   <div class="sph-left">
-    <button class="sph-back" onclick="history.back()" title="Kembali">
+    <button class="sph-back" onclick="history.back()" title="Back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     </button>
     <div class="sph-logo">
@@ -582,13 +582,13 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
     </div>
     <div class="ed-divider"></div>
     <div class="ed-section">
-      <button class="ed-btn" onclick="addAskWidget()" title="Tambah widget Ask Me Anonymous" style="position:relative" id="ask-btn">
+      <button class="ed-btn" onclick="addAskWidget()" title="Add Ask Me Anonymous widget" style="position:relative" id="ask-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><line x1="9" y1="10" x2="9" y2="10" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="10" x2="12" y2="10" stroke-width="3" stroke-linecap="round"/><line x1="15" y1="10" x2="15" y2="10" stroke-width="3" stroke-linecap="round"/></svg>
       </button>
     </div>
     <div class="ed-divider"></div>
     <div class="ed-section">
-      <button class="ed-btn" onclick="toggleQueue()" title="Queue / Urutan Putar" id="queue-btn">
+      <button class="ed-btn" onclick="toggleQueue()" title="Queue / Play Order" id="queue-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
       </button>
     </div>
@@ -641,10 +641,10 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
 <!-- QUEUE PANEL -->
 <div id="queue-panel">
   <div class="qp-head">
-    <span class="qp-title">🎵 Urutan Putar <span id="queue-count" style="color:var(--green);font-family:var(--fm);font-size:.6rem"></span></span>
+    <span class="qp-title">🎵 Play Queue <span id="queue-count" style="color:var(--green);font-family:var(--fm);font-size:.6rem"></span></span>
     <button class="qp-close" onclick="toggleQueue()">×</button>
   </div>
-  <div id="queue-empty" style="display:none"><span>😶</span>Belum ada lagu di queue.</div>
+  <div id="queue-empty" style="display:none"><span>😶</span>No songs in queue yet.</div>
   <div id="queue-list"></div>
 </div>
 
@@ -656,8 +656,8 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
     <div class="modal-header"><span class="modal-title">Add Music Card</span><button class="modal-close" onclick="closeModal('music')">×</button></div>
     <div class="modal-search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="modal-search" id="music-q" placeholder="Cari lagu atau artis..." onkeydown="if(event.key==='Enter')searchMusic('music-q','music-grid-res')">
-      <button class="modal-search-btn" onclick="searchMusic('music-q','music-grid-res')">Cari</button>
+      <input class="modal-search" id="music-q" placeholder="Search song or artist..." onkeydown="if(event.key==='Enter')searchMusic('music-q','music-grid-res')">
+      <button class="modal-search-btn" onclick="searchMusic('music-q','music-grid-res')">Search</button>
     </div>
     <div id="music-grid-res" class="modal-grid"><div class="modal-empty"><span>🎵</span>Ketik untuk mencari</div></div>
   </div>
@@ -695,8 +695,8 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;min-height:56px;display:flex;align-items:center">
       <p id="edit-text-preview" style="font-size:16px;color:#ffffff;font-weight:400;line-height:1.5;word-break:break-word;font-family:'Space Grotesk',sans-serif;margin:0;width:100%">Preview teks...</p>
     </div>
-    <textarea id="edit-text-input" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.82rem;min-height:90px;outline:none;resize:vertical;margin-bottom:10px" placeholder="Ketik teks di sini..." oninput="document.getElementById('edit-text-preview').textContent=this.value||'Preview teks...'"></textarea>
-    <button class="ed-save-btn" onclick="saveEditText()">✓ Simpan Perubahan</button>
+    <textarea id="edit-text-input" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.82rem;min-height:90px;outline:none;resize:vertical;margin-bottom:10px" placeholder="Type text here..." oninput="document.getElementById('edit-text-preview').textContent=this.value||'Preview teks...'"></textarea>
+    <button class="ed-save-btn" onclick="saveEditText()">✓ Save Changes</button>
   </div>
 </div>
 
@@ -729,10 +729,10 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
       <input type="color" id="text-custom-color" value="#ffffff" style="width:26px;height:26px;border:none;border-radius:50%;cursor:pointer;background:none;padding:0" oninput="setTextColor(this.value)">
     </div>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;min-height:56px;display:flex;align-items:center">
-      <p id="text-preview" style="font-size:16px;color:#ffffff;font-weight:400;line-height:1.5;word-break:break-word;font-family:'Space Grotesk',sans-serif">Preview teks kamu...</p>
+      <p id="text-preview" style="font-size:16px;color:#ffffff;font-weight:400;line-height:1.5;word-break:break-word;font-family:'Space Grotesk',sans-serif">Text preview...</p>
     </div>
-    <textarea id="text-input" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.82rem;min-height:90px;outline:none;resize:vertical;margin-bottom:10px" placeholder="Ketik teks di sini..." oninput="document.getElementById('text-preview').textContent=this.value||'Preview teks kamu...'"></textarea>
-    <button class="ed-save-btn" onclick="addTextEl()">Tambahkan ke Halaman</button>
+    <textarea id="text-input" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.82rem;min-height:90px;outline:none;resize:vertical;margin-bottom:10px" placeholder="Type text here..." oninput="document.getElementById('text-preview').textContent=this.value||'Text preview...'"></textarea>
+    <button class="ed-save-btn" onclick="addTextEl()">Add to Page</button>
   </div>
 </div>
 
@@ -742,10 +742,10 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
     <div class="modal-header"><span class="modal-title">Add GIF via Giphy</span><button class="modal-close" onclick="closeModal('gif')">×</button></div>
     <div class="modal-search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="modal-search" id="gif-q" placeholder="Cari GIF..." onkeydown="if(event.key==='Enter')searchGifs()">
-      <button class="modal-search-btn" id="gif-search-btn" onclick="searchGifs()">Cari</button>
+      <input class="modal-search" id="gif-q" placeholder="Search GIF..." onkeydown="if(event.key==='Enter')searchGifs()">
+      <button class="modal-search-btn" id="gif-search-btn" onclick="searchGifs()">Search</button>
     </div>
-    <div id="gif-grid-res" class="gif-grid"><div class="modal-empty" style="grid-column:1/-1"><span>✨</span>Cari GIF dari Giphy</div></div>
+    <div id="gif-grid-res" class="gif-grid"><div class="modal-empty" style="grid-column:1/-1"><span>✨</span>Search GIFs from Giphy</div></div>
   </div>
 </div>
 
@@ -757,7 +757,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
       <button class="modal-close" onclick="closeModal('sticker')">×</button>
     </div>
     <div class="sticker-tabs">
-      <button class="sticker-tab active" id="stab-create" onclick="switchStickerTab('create')">✦ Buat Baru</button>
+      <button class="sticker-tab active" id="stab-create" onclick="switchStickerTab('create')">✦ Create New</button>
       <button class="sticker-tab" id="stab-library" onclick="switchStickerTab('library')">🗂 Koleksi Stiker</button>
     </div>
 
@@ -787,7 +787,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
         </div>
 
         <!-- BG removal method selector -->
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Hapus Background</div>
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Remove Background</div>
         <div class="bg-method-row">
           <button class="bg-method-btn active" id="bgm-auto" onclick="selectBgMethod('auto')">✦ Otomatis</button>
           <button class="bg-method-btn" id="bgm-color" onclick="selectBgMethod('color')">🎨 By Warna</button>
@@ -809,11 +809,11 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
         </div>
 
         <div style="display:flex;gap:8px;margin-top:4px">
-          <button onclick="removeStickerBg()" id="btn-remove-bg" style="flex:1;padding:9px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;color:var(--sub);font-family:var(--f);font-size:.75rem;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--green)';this.style.color='var(--green)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--sub)'">✦ Hapus Background</button>
+          <button onclick="removeStickerBg()" id="btn-remove-bg" style="flex:1;padding:9px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;color:var(--sub);font-family:var(--f);font-size:.75rem;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--green)';this.style.color='var(--green)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--sub)'">✦ Remove Background</button>
           <button onclick="resetStickerImg()" style="padding:9px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;color:var(--sub);font-family:var(--f);font-size:.75rem;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='#ff5555';this.style.color='#ff5555'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--sub)'">↺</button>
         </div>
 
-        <button class="ed-save-btn" style="margin-top:10px" onclick="saveSticker()">💾 Simpan & Gunakan Stiker</button>
+        <button class="ed-save-btn" style="margin-top:10px" onclick="saveSticker()">💾 Save & Use Sticker</button>
       </div>
     </div>
 
@@ -821,7 +821,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
     <div id="sticker-tab-library" style="display:none">
       <div id="sticker-grid-wrap">
         <div class="sticker-grid" id="sticker-grid"></div>
-        <div id="sticker-grid-empty" style="text-align:center;padding:30px;color:var(--muted);font-size:.78rem;display:none"><span style="display:block;font-size:2rem;margin-bottom:8px">🎨</span>Belum ada stiker. Buat stiker baru dulu!</div>
+        <div id="sticker-grid-empty" style="text-align:center;padding:30px;color:var(--muted);font-size:.78rem;display:none"><span style="display:block;font-size:2rem;margin-bottom:8px">🎨</span>No stickers yet. Create a new sticker first!</div>
       </div>
     </div>
   </div>
@@ -965,7 +965,7 @@ function _createYTPlayer(videoId){
           isPlaying=false; cancelAnimationFrame(raf); nextTrack();
         }
       },
-      onError(e){ toast('⚠ Video tidak bisa diputar, coba lagu lain'); }
+      onError(e){ toast('⚠ Video could not be played, try another song'); }
     }
   });
 }
@@ -985,7 +985,7 @@ async function resolveVid(query){
   }catch(e){ return null; }
 }
 
-// Token untuk batalkan pencarian sebelumnya jika lagu berganti
+// Token to cancel previous search if song changes
 let _playToken = 0;
 
 function sanitizeQuery(s){ return (s||'').replace(/[^\w\s\-]/g,' ').replace(/\s+/g,' ').trim(); }
@@ -1008,21 +1008,21 @@ async function playTrackAtIndex(idx){
   renderQueue();
   updateAllCardState();
 
-  // Buat token baru — jika lagu berganti sebelum resolve selesai, token lama tidak valid
+  // Create new token — if song changes before resolve finishes, old token is invalid
   const token = ++_playToken;
-  toast('▶ Mencari: '+(title||'lagu'));
+  toast('▶ Searching: '+(title||'song'));
 
   const q1 = sanitizeQuery(artist+' '+title+' official audio');
   const q2 = sanitizeQuery(artist+' '+title);
   const videoId = (q1 ? await resolveVid(q1) : null) || (q2 ? await resolveVid(q2) : null);
 
-  // Jika sudah ada request lebih baru, batalkan
+  // If a newer request already exists, cancel
   if(token !== _playToken) return;
 
   if(videoId){
-    await initYTPlayer(videoId).catch(()=>toast('⚠ Gagal memuat video'));
+    await initYTPlayer(videoId).catch(()=>toast('⚠ Failed to load video'));
     if(token !== _playToken) return;
-    toast('▶ '+(title||'lagu'));
+    toast('▶ '+(title||'song'));
   } else {
     // Fallback ke preview iTunes jika ada
     if(t.preview){
@@ -1039,9 +1039,9 @@ async function playTrackAtIndex(idx){
       audio.play().catch(()=>{});
       isPlaying=true; updatePlayerUIPlaying();
       raf=requestAnimationFrame(updateProgress);
-      toast('▶ '+(title||'lagu')+' (preview)');
+      toast('▶ '+(title||'song')+' (preview)');
     } else {
-      toast('⚠ Video tidak ditemukan untuk: '+(title||'lagu ini'));
+      toast('⚠ No video found for: '+(title||'this song'));
     }
   }
 }
@@ -1080,7 +1080,7 @@ function updateAllCardState(){
 }
 
 function togglePlay(){
-  if(!queue.length){toast('⚠ Tambahkan lagu dulu!');return;}
+  if(!queue.length){toast('⚠ Add songs first!');return;}
   if(queueIndex<0){playTrackAtIndex(0);return;}
   if(isPlaying){
     if(YTP) YTP.pauseVideo();
@@ -1126,7 +1126,7 @@ function removeFromQueue(idx){
       queue.splice(idx,1);
       queueIndex=-1;isPlaying=false;
       document.getElementById('mini-player').classList.remove('visible');
-      // Turunkan kembali mobile widget toolbar
+      // Restore mobile widget toolbar
       const mwb=document.getElementById('mob-widget-bar');
       if(mwb) mwb.classList.remove('player-up');
     }
@@ -1155,7 +1155,7 @@ function renderQueue(){
       ondragover="qDragOver(event,${i})"
       ondragend="qDragEnd()"
       onclick="playTrackAtIndex(${i})">
-      <span class="qi-drag" title="Drag untuk ubah urutan">⠿</span>
+      <span class="qi-drag" title="Drag to reorder">⠿</span>
       <span class="qi-num">${i+1}</span>
       <img class="qi-thumb" src="${esc(t.thumb)}" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%231e1e1e%22 width=%22100%22 height=%22100%22/%3E%3Ctext y=%2262%22 x=%2250%25%22 text-anchor=%22middle%22 font-size=%2240%22%3E%F0%9F%8E%B5%3C/text%3E%3C/svg%3E'">
       <div class="qi-info">
@@ -1166,7 +1166,7 @@ function renderQueue(){
         <button class="qi-move-btn" onclick="event.stopPropagation();qMoveUp(${i})" ${i===0?'disabled':''} title="Naik">▲</button>
         <button class="qi-move-btn" onclick="event.stopPropagation();qMoveDown(${i})" ${i===queue.length-1?'disabled':''} title="Turun">▼</button>
       </div>
-      <button class="qi-remove" onclick="event.stopPropagation();removeFromQueue(${i})" title="Hapus dari queue">✕</button>
+      <button class="qi-remove" onclick="event.stopPropagation();removeFromQueue(${i})" title="Remove from queue">✕</button>
     </div>`).join('');
 }
 function qDragStart(i){_qdrag=i;}
@@ -1370,9 +1370,9 @@ function makeWidget(el, cfg){
   const bar = document.createElement('div');
   bar.className='w-bar';
   const rotBtns = noRotate ? '' : `
-    <button class="w-bar-btn" title="Putar -15°" onclick="rotateWidget('${id}',-15)">↺</button>
+    <button class="w-bar-btn" title="Rotate -15°" onclick="rotateWidget('${id}',-15)">↺</button>
     <span class="w-bar-rot" id="wr-${id}">${initRot}°</span>
-    <button class="w-bar-btn" title="Putar +15°" onclick="rotateWidget('${id}',15)">↻</button>
+    <button class="w-bar-btn" title="Rotate +15°" onclick="rotateWidget('${id}',15)">↻</button>
     <button class="w-bar-btn" title="Reset rotasi" onclick="rotateWidget('${id}',0,true)" style="font-size:.6rem">0°</button>`;
   const isTextWidget = cfg.type === 'text';
   const editBtn = isTextWidget ? `<button class="w-bar-btn" onclick="openEditTextModal('${id}')" title="Edit teks" style="color:#a78bfa">✎ Edit</button><button class="w-bar-btn" onclick="rapikanTeks('${id}')" title="Auto-fit ukuran teks" style="color:#1ed760">✦ Rapihkan</button>` : '';
@@ -1718,7 +1718,7 @@ function saveWidgetState(el){
 
 // ── HEADER WIDGETS ──
 const DEFAULTS={
-  'hw-profile':{x:40,y:40,w:130,h:130,label:'📷 Foto Profil'},
+  'hw-profile':{x:40,y:40,w:130,h:130,label:'📷 Profile Photo'},
   'hw-label':  {x:190,y:40,w:200,h:24,label:'🏷 Label'},
   'hw-title':  {x:190,y:72,w:300,h:80,label:'✏️ Judul'},
   'hw-desc':   {x:190,y:158,w:300,h:70,label:'📝 Deskripsi'},
@@ -1773,7 +1773,7 @@ function buildHeaderWidgets(){
     const pbEl=document.createElement('div');
     pbEl.dataset.hwKey='hw-playbar';
     pbEl.innerHTML=`<div class="playbar-el">
-      <button class="play-btn-big" onclick="isPlaying ? togglePlay() : (queue.length ? togglePlay() : playAllFromTop())" title="Putar / Pause">
+      <button class="play-btn-big" onclick="isPlaying ? togglePlay() : (queue.length ? togglePlay() : playAllFromTop())" title="Play / Pause">
         <svg class="icon-play" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>
         <svg class="icon-pause" viewBox="0 0 24 24" fill="black" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
       </button>
@@ -1787,7 +1787,7 @@ function buildHeaderWidgets(){
 
 function playAllFromTop(){
   const musicEls = elData.filter(d=>d.type==='music');
-  if(!musicEls.length){toast('⚠ Belum ada lagu di halaman');return;}
+  if(!musicEls.length){toast('⚠ No songs on this page');return;}
   queue=musicEls.map(d=>({id:d.id,title:d.title,artist:d.artist,thumb:d.thumb,preview:d.preview||null}));
   queueIndex=-1;
   renderQueue();
@@ -1815,7 +1815,7 @@ function addToFreeZone(el,data){
 
 function updatePlayCountLabel(){
   const lbl=document.getElementById('play-count-label');
-  if(lbl)lbl.textContent=elData.filter(d=>d.type==='music').length+' lagu';
+  if(lbl)lbl.textContent=elData.filter(d=>d.type==='music').length+' songs';
 }
 
 function addMusicCardEl(track){
@@ -1894,7 +1894,7 @@ function addTextEl(){
   addToFreeZone(el,{type:'text',x:60,y:60,w:260,h:Math.max(80,fontSize*3),label:'✍ Text',txt,fontSize,fontWeight,color});
   closeModal('text');
   document.getElementById('text-input').value='';
-  document.getElementById('text-preview').textContent='Preview teks kamu...';
+  document.getElementById('text-preview').textContent='Text preview...';
   toast('✍ Text added!');
 }
 
@@ -1922,7 +1922,7 @@ function rapikanTeks(wid){
   }
   p.style.fontSize = best + 'px';
 
-  // Simpan ke data
+  // Save to data
   const idx = elData.findIndex(d=>d.id===wid);
   if(idx>-1){
     elData[idx].fontSize = best;
@@ -1992,7 +1992,7 @@ function saveEditText(){
     localStorage.setItem('sp_els',JSON.stringify(elData));
   }
   document.getElementById('modal-edit-text').classList.remove('open');
-  toast('✎ Teks diperbarui!');
+  toast('✎ Text updated!');
 }
 function addGifEl(url){
   const el=document.createElement('div');
@@ -2055,7 +2055,7 @@ function handleProfileUpload(e){
     if(img){img.src=src;img.style.display='block';document.getElementById('profile-ph').style.display='none';}
     pageInfo.profileImg=src;
     localStorage.setItem('sp_info',JSON.stringify(pageInfo));
-    toast('✓ Foto profil diperbarui!');
+    toast('✓ Profile photo updated!');
   };
   r.readAsDataURL(file);
 }
@@ -2166,7 +2166,7 @@ async function searchGifs(){
     }).join('');
   }catch(err){
     grid.innerHTML='<div class="modal-empty" style="grid-column:1/-1"><span>⚠️</span>Gagal memuat GIF</div>';
-  }finally{btn.disabled=false;btn.textContent='Cari';}
+  }finally{btn.disabled=false;btn.textContent='Search';}
 }
 
 // ── TITLE/DESC SAVE ──
@@ -2391,7 +2391,7 @@ function removeStickerBg(){
   if(_stickerBgMethod==='none'){
     _stickerCurrentDataURL = _stickerOrigDataURL;
     showStickerPreview(_stickerOrigDataURL, false);
-    toast('— Tidak ada background yang dihapus');
+    toast('— No background was removed');
     return;
   }
   if(_stickerBgMethod==='color'){
@@ -2454,7 +2454,7 @@ function autoRemoveBg(){
     document.getElementById('sticker-preview-img').style.display='none';
     toast('✦ Background berhasil dihapus!');
   };
-  img.onerror=()=>{ toast('⚠ Gagal memproses gambar'); document.getElementById('sticker-processing').classList.remove('active'); document.getElementById('sticker-preview-area').style.display='block'; };
+  img.onerror=()=>{ toast('⚠ Failed to process image'); document.getElementById('sticker-processing').classList.remove('active'); document.getElementById('sticker-preview-area').style.display='block'; };
   img.crossOrigin='anonymous';
   img.src = _stickerOrigDataURL;
 }
@@ -2513,7 +2513,7 @@ function resetStickerImg(){
 
 async function saveSticker(){
   const dataURL = _stickerCurrentDataURL;
-  if(!dataURL){ toast('⚠ Tidak ada stiker untuk disimpan'); return; }
+  if(!dataURL){ toast('⚠ No sticker to save'); return; }
   const btn = document.querySelector('#sticker-tab-create .ed-save-btn');
   if(btn){ btn.disabled=true; btn.textContent='💾 Menyimpan...'; }
   const id = 'stk-'+Date.now();
@@ -2522,7 +2522,7 @@ async function saveSticker(){
   document.getElementById('sticker-upload-area').style.display='block';
   document.getElementById('sticker-preview-area').style.display='none';
   _stickerOrigDataURL=null; _stickerCurrentDataURL=null;
-  if(btn){ btn.disabled=false; btn.textContent='💾 Simpan & Gunakan Stiker'; }
+  if(btn){ btn.disabled=false; btn.textContent='💾 Save & Use Sticker'; }
   closeModal('sticker');
   toast(saved ? '🎉 Stiker disimpan & bisa dipakai semua user!' : '🎉 Stiker ditambahkan! (tersimpan lokal)');
 }
@@ -2538,7 +2538,7 @@ async function renderStickerGrid(){
   const grid = document.getElementById('sticker-grid');
   const empty = document.getElementById('sticker-grid-empty');
   // show loading state
-  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--muted);font-size:.75rem"><div style="width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 8px"></div>Memuat stiker...</div>';
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--muted);font-size:.75rem"><div style="width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 8px"></div>Loading stickers...</div>';
   empty.style.display='none';
 
   const lib = await getStickerLibrary();
@@ -2547,7 +2547,7 @@ async function renderStickerGrid(){
   grid.innerHTML = lib.map((s,i)=>`
     <div class="sticker-thumb" data-idx="${i}" title="Klik untuk gunakan">
       <img src="${s.dataURL}" alt="sticker">
-      <button class="st-del" title="Hapus stiker">✕</button>
+      <button class="st-del" title="Delete sticker">✕</button>
     </div>`).join('');
   grid.querySelectorAll('.sticker-thumb img').forEach((img,i)=>{
     img.onclick = ()=>{ useStickerFromLibrary(lib[i].id, lib[i].dataURL); };
@@ -2637,7 +2637,7 @@ function applyBgToPage(bg, save=true){
   if(save){
     try{
       if(bg.type==='image'){
-        // Simpan foto bg di sessionStorage (tidak ada kuota ketat), metadata di localStorage
+        // Save bg photo in sessionStorage (no strict quota), metadata in localStorage
         try{ sessionStorage.setItem('sp_bg_img', bg.value); }catch(e){}
         const meta={type:'image', overlay:bg.overlay||0, hasImg:true};
         pageInfo.bg=meta;
@@ -2645,14 +2645,14 @@ function applyBgToPage(bg, save=true){
         sessionStorage.removeItem('sp_bg_img');
         pageInfo.bg=bg;
       }
-      // Hapus data gambar lama dari sp_info agar tidak memenuhi localStorage
+      // Remove old image data from sp_info to avoid filling localStorage
       const infoToSave={...pageInfo};
       if(infoToSave.bg && infoToSave.bg.type==='image' && infoToSave.bg.value){
         delete infoToSave.bg.value; // jangan simpan base64 di localStorage
       }
       localStorage.setItem('sp_info', JSON.stringify(infoToSave));
     } catch(e){
-      toast('⚠ Gagal simpan background: storage penuh');
+      toast('⚠ Failed to save background: storage full');
     }
   }
 }
@@ -2660,7 +2660,7 @@ function applyBgToPage(bg, save=true){
 function applyBg(){
   applyBgToPage(_bgPending, true);
   closeModal('bg');
-  toast('✓ Background diperbarui!');
+  toast('✓ Background updated!');
 }
 
 function resetBg(){
@@ -2685,7 +2685,7 @@ function initBg(){
     if(imgData){
       applyBgToPage({type:'image', value:imgData, overlay:bg.overlay||0}, false);
     }
-    // Jika tidak ada (tab baru/refresh), background foto tidak tampil — user perlu set ulang
+    // If not found (new tab/refresh), bg photo won't show — user must re-set
     // tapi setidaknya tidak crash
   } else {
     applyBgToPage(bg, false);
@@ -2772,8 +2772,8 @@ function addAskWidget() {
           <div class="ask-preview-header-xbtn" style="color:#3a2e00;">✕</div>
         </div>
         <div class="ask-preview-body" style="background:linear-gradient(180deg,#fffef5 0%,#fdfbec 100%);">
-          <div class="ask-preview-input-mock">Tulis pesan atau pertanyaanmu...</div>
-          <div class="ask-preview-btn-mock" style="background:linear-gradient(135deg,#f0c800,#d4a800);color:#3a2e00;">Kirim</div>
+          <div class="ask-preview-input-mock">Write your message or question...</div>
+          <div class="ask-preview-btn-mock" style="background:linear-gradient(135deg,#f0c800,#d4a800);color:#3a2e00;">Send</div>
         </div>
       </div>
     </div>
@@ -2795,7 +2795,7 @@ function addAskWidget() {
     saveKey: 'sp_els',
   });
   el.dataset.elType = 'ask';
-  // Tambahkan ke elData agar tersimpan
+  // Add to elData so it saves
   const wid2 = el.dataset.wid;
   if (wid2) {
     elData.push({ id: wid2, type: 'ask', theme: 'yellow', x: Math.round(zW*0.05), y: Math.round(zW*0.6), w: Math.round(zW*0.9), h: 200, rotation: 0 });
@@ -2850,14 +2850,14 @@ async function processElementsForUpload(sid, els) {
     const el = { ...els[i] };
     let html = el.html;
 
-    // Cari semua src="data:image..." di dalam html string
+    // Find all src="data:image..." in the html string
     const base64Matches = [...html.matchAll(/src="(data:image[^"]+)"/g)];
     for (let j = 0; j < base64Matches.length; j++) {
       const [fullMatch, b64] = base64Matches[j];
       try {
         const url = await uploadImgToStorage(b64);
         if (url) html = html.replace(fullMatch, `src="${url}"`);
-      } catch(e) { console.warn('Gagal upload gambar:', e); }
+      } catch(e) { console.warn('Failed to upload image:', e); }
     }
 
     // Background di pageInfo.bg juga bisa base64
@@ -2879,7 +2879,7 @@ async function processBgForUpload(sid, bg) {
   try {
     const url = await uploadImgToStorage(imgData);
     if (url) return { ...bg, value: url };
-  } catch(e) { console.warn('Gagal upload background:', e); }
+  } catch(e) { console.warn('Failed to upload background:', e); }
   return bg;
 }
 
@@ -2889,7 +2889,7 @@ async function processProfileForUpload(sid, info) {
   try {
     const url = await uploadImgToStorage(info.profileImg);
     if (url) return { ...info, profileImg: url };
-  } catch(e) { console.warn('Gagal upload profile:', e); }
+  } catch(e) { console.warn('Failed to upload profile:', e); }
   return info;
 }
 
@@ -2967,7 +2967,7 @@ async function publishAndCopy() {
 
     btn.textContent = '⏳ Menyimpan ke database...';
 
-    // Simpan metadata + elemen ke Realtime DB (TANPA base64, hanya URL)
+    // Save metadata + elements to Realtime DB (WITHOUT base64, URLs only)
     const snapshot = {
       info,
       els,
@@ -3008,11 +3008,11 @@ async function publishAndCopy() {
 
   } catch(err) {
     console.error('Publish error:', err);
-    statusEl.innerHTML = '<span style="color:#ff5555">✗ Gagal: ' + (err.message || 'Error tidak diketahui') + '</span>';
-    toast('⚠ Gagal mempublikasikan, coba lagi');
+    statusEl.innerHTML = '<span style="color:#ff5555">✗ Gagal: ' + (err.message || 'Unknown error') + '</span>';
+    toast('⚠ Failed to publish, please try again');
   } finally {
     btn.disabled = false;
-    btn.textContent = '📤 Publikasikan & Salin Link';
+    btn.textContent = '📤 Publish & Copy Link';
   }
 }
 
@@ -3048,7 +3048,7 @@ function shareToSocial(platform) {
 <div class="modal-overlay" id="modal-share" onclick="if(event.target===this)closeShareModal()">
   <div class="modal" style="max-width:420px">
     <div class="modal-header">
-      <span class="modal-title">🔗 Bagikan VibeProfile</span>
+      <span class="modal-title">🔗 Share VibeProfile</span>
       <button class="modal-close" onclick="closeShareModal()">×</button>
     </div>
 
@@ -3058,7 +3058,7 @@ function shareToSocial(platform) {
         <img id="share-qr-img" src="" alt="QR" width="100" height="100" style="display:block;border-radius:8px">
       </div>
       <div style="flex:1;min-width:0">
-        <div style="font-size:.7rem;color:var(--sub);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Link Halaman Publik</div>
+        <div style="font-size:.7rem;color:var(--sub);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Public Page Link</div>
         <div style="position:relative">
           <input id="share-link-input" readonly style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 40px 9px 12px;color:var(--text);font-family:var(--fm);font-size:.68rem;outline:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer" onclick="this.select()" title="Klik untuk pilih">
           <button onclick="publishAndCopy()" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--sub);padding:4px;border-radius:6px;transition:color .2s;display:flex;align-items:center" title="Salin link">
@@ -3071,11 +3071,11 @@ function shareToSocial(platform) {
 
     <!-- Publish CTA -->
     <button id="share-publish-btn" onclick="publishAndCopy()" style="width:100%;padding:13px;background:var(--green);border:none;border-radius:12px;color:#000;font-family:var(--f);font-weight:800;font-size:.88rem;cursor:pointer;transition:all .2s;margin-bottom:14px;letter-spacing:-.2px" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">
-      📤 Publikasikan & Salin Link
+      📤 Publish & Copy Link
     </button>
 
     <div style="font-size:.7rem;color:var(--muted);text-align:center;margin-bottom:14px;line-height:1.6">
-      Siapapun yang punya link bisa melihat halamanmu.<br>Klik "Publikasikan" setiap kali mau perbarui tampilan.
+      Anyone with the link can view your page.<br>Click "Publish" each time you want to update the display.
     </div>
 
     <!-- Social share -->

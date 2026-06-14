@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,7 +73,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .sec-label-btn:hover{color:var(--green);background:var(--green-dim);}
 #pl-list{flex:1;overflow-y:auto;padding:0 10px 6px;scrollbar-width:thin;scrollbar-color:var(--hover) transparent}
 
-/* Playlist items di sidebar */
+/* Playlist items in sidebar */
 .pl-item{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:var(--rs);cursor:pointer;transition:all .18s;position:relative}
 .pl-item:hover{background:var(--hover)}
 .pl-item.now{background:var(--green-dim)}
@@ -786,12 +786,12 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 /* Notif like komentar */
 .notif-icon-comment-like { background: rgba(255,90,90,.15); }
 
-/* Tombol komentar di pub-card (beranda) */
+/* Comment button in pub-card (home) */
 .pub-comment-btn{display:flex;align-items:center;gap:3px;background:var(--bg);border:1px solid var(--border);color:var(--sub);font-family:var(--f);font-size:.7rem;cursor:pointer;padding:4px 8px;border-radius:50px;transition:all .18s;flex-shrink:0;white-space:nowrap;}
 .pub-comment-btn:hover{color:var(--teal);border-color:rgba(61,157,214,.35);background:rgba(61,157,214,.06);}
 .pub-comment-btn svg{width:12px;height:12px;flex-shrink:0;}
 
-/* Modal komentar (dari beranda pub-card) */
+/* Comment modal (from home pub-card) */
 #comment-modal{position:fixed;inset:0;z-index:9000;display:none;align-items:flex-end;justify-content:center;}
 #comment-modal.open{display:flex;}
 #comment-modal .cm-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);}
@@ -876,7 +876,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   .home-greeting{font-size:1.2rem}
   .home-sub{font-size:.75rem;margin-bottom:14px}
 
-  /* Section title: flex nowrap agar "Buat Playlist" tidak terpotong */
+  /* Section title: flex nowrap agar "Create Playlist" tidak terpotong */
   .home-section-title{
     font-size:.88rem;margin-bottom:10px;
     display:flex;align-items:center;justify-content:space-between;
@@ -890,7 +890,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     white-space:nowrap;flex-shrink:0;
   }
 
-  /* Playlist grid 2 kolom */
+  /* Playlist grid 2 columns */
   .playlists-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .pg-card{padding:10px;border-radius:12px}
   .pg-cover{font-size:2.2rem;border-radius:8px;margin-bottom:8px}
@@ -1003,7 +1003,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   .pv-title{font-size:1.25rem;line-height:1.2}
   .pv-sub{font-size:.72rem}
 
-  /* Actions: baris 1 = play + ubah nama + tambah lagu, baris 2 = publikasi + hapus */
+  /* Actions: baris 1 = play + ubah nama + tambah songs, baris 2 = publikasi + hapus */
   .pv-actions{
     padding:8px 14px 10px;
     gap:6px;
@@ -1074,9 +1074,6 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   #fs-btn-play{width:48px;height:48px}
   #fs-btn-play svg{width:20px;height:20px}
   .fs-btn svg{width:19px;height:19px}
-  #fs-album-art,#fs-album-art-ph{width:38px;height:38px;}
-  #fs-song-title{font-size:.75rem;max-width:110px;}
-  #fs-song-artist{font-size:.65rem;max-width:110px;}
 
   /* Pure mode hint */
   #pure-exit-hint{top:12px;right:12px;font-size:.62rem;padding:6px 12px}
@@ -1126,21 +1123,14 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .fs-ll.active{color:#fff;font-size:2.1rem;text-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .fs-ll.past{color:rgba(255,255,255,0.18);}
 .fs-ll:hover{color:rgba(255,255,255,0.7);}
-#fs-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:linear-gradient(to top,rgba(0,0,0,0.75) 80%,transparent);padding:16px 28px 28px;}
+#fs-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:linear-gradient(to top,rgba(0,0,0,0.7) 80%,transparent);padding:16px 28px 28px;}
 #fs-prog-wrap{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 #fs-prog-track{flex:1;height:4px;background:rgba(255,255,255,0.25);border-radius:4px;cursor:pointer;position:relative;overflow:hidden;transition:height .15s;}
 #fs-prog-track:hover{height:6px}
 #fs-prog-fill{height:100%;background:#fff;border-radius:4px;width:0%;transition:width .25s linear;}
 .fs-t{font-size:.67rem;color:rgba(255,255,255,0.6);font-family:var(--fm);width:34px}
 .fs-t.r{text-align:right}
-#fs-ctrl{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;}
-#fs-ctrl-btns{display:flex;align-items:center;justify-content:center;gap:22px;}
-#fs-song-info{display:flex;align-items:center;gap:11px;justify-content:flex-start;}
-#fs-album-art{width:46px;height:46px;border-radius:9px;object-fit:cover;background:rgba(255,255,255,0.1);flex-shrink:0;box-shadow:0 4px 16px rgba(0,0,0,0.5);}
-#fs-album-art-ph{width:46px;height:46px;border-radius:9px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(0,0,0,0.5);}
-#fs-song-text{min-width:0;}
-#fs-song-title{font-size:.82rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;max-width:160px;}
-#fs-song-artist{font-size:.7rem;color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;max-width:160px;}
+#fs-ctrl{display:flex;align-items:center;justify-content:center;gap:22px}
 .fs-btn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0.7;transition:all .18s;padding:4px;border-radius:50%}
 .fs-btn:hover{opacity:1;transform:scale(1.1)}
 .fs-btn svg{width:20px;height:20px}
@@ -1354,7 +1344,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   will-change: transform, opacity, filter, color;
 }
 
-/* State: kata baru saja muncul (animasi masuk) */
+/* State: word just appeared (entrance animation) */
 .k-word.k-word-enter {
   animation: kw-enter .22s cubic-bezier(.34,1.56,.64,1) forwards;
 }
@@ -2088,7 +2078,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <div id="auth-overlay">
   <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
     <img src="bird.gif" alt="Loading" style="width:160px;height:122px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(29,107,219,0.5));animation:birdFloat 2.4s ease-in-out infinite;">
-    <span style="font-size:.78rem;color:#3A4560;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;animation:birdPulse 1.6s ease-in-out infinite;">Memuat...</span>
+    <span style="font-size:.78rem;color:#3A4560;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;animation:birdPulse 1.6s ease-in-out infinite;">Loading...</span>
   </div>
 </div>
 <style>
@@ -2109,28 +2099,28 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <nav class="nav">
     <div class="nav-i on" id="nav-home" onclick="showHomeView()">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      Beranda
+      Home
     </div>
     <div class="nav-i" id="nav-search" onclick="showSearchView()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      Cari Lagu
+      Search Songs
     </div>
     <div class="nav-i" id="nav-finder" onclick="showFinderView()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9c.55-1.34 2.25-2 3.5-1.3a2.5 2.5 0 0 1 .5 4c-.83.67-1.5 1-1.5 2"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>
-      Cari Judul Lagu
+      Find Song Title
     </div>
   </nav>
   <div class="sec-label">
-    <span>Playlist Saya</span>
-    <button class="sec-label-btn" onclick="openNewPlaylistModal()" title="Buat playlist baru">+</button>
+    <span>My Playlists</span>
+    <button class="sec-label-btn" onclick="openNewPlaylistModal()" title="Create new playlist">+</button>
   </div>
   <div id="pl-list">
-    <div class="pl-empty"><span></span>Belum ada playlist</div>
+    <div class="pl-empty"><span></span>No playlists yet</div>
   </div>
   <div class="side-bottom">
     <div class="cloud-indicator" id="cloud-indicator">
       <div class="cloud-dot" id="cloud-dot"></div>
-      <span id="cloud-status">Tidak terhubung</span>
+      <span id="cloud-status">Not connected</span>
     </div>
     <div class="notif-bell-wrap">
       <button class="notif-bell-btn" onclick="toggleNotifPanel()">
@@ -2160,19 +2150,19 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <!-- HOME VIEW -->
   <div id="home-view" class="active">
     <div class="home-greeting" id="home-greeting">Selamat datang </div>
-    <div class="home-sub">Playlist kamu tersimpan otomatis di akun ini.</div>
+    <div class="home-sub">Your playlists are automatically saved to this account.</div>
     <div class="home-section-title">
-      <span>Semua Playlist</span>
+      <span>All Playlists</span>
       <button class="home-new-pl-btn" onclick="openNewPlaylistModal()">
         <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-        Buat Playlist
+        Create Playlist
       </button>
     </div>
     <div class="playlists-grid" id="playlists-grid">
       <div class="empty" style="grid-column:1/-1;padding:40px 0">
         <i></i>
-        <h3>Belum Ada Playlist</h3>
-        <p>Klik "+ Buat Playlist" untuk memulai</p>
+        <h3>No Playlists Yet</h3>
+        <p>Click &quot;+ Create Playlist&quot; to get started</p>
       </div>
     </div>
 
@@ -2180,7 +2170,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="pub-section" id="top-ranking-section" style="display:none;">
       <div class="pub-section-header">
         <div class="pub-section-title">
-           Top Playlist
+           Top Playlists
           <span class="pub-badge">Ranking</span>
         </div>
       </div>
@@ -2191,7 +2181,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="pub-section" id="public-feed-section" style="display:none;">
       <div class="pub-section-header">
         <div class="pub-section-title">
-           Playlist Publik
+           Public Playlists
           <span class="pub-badge">Live</span>
         </div>
         <button class="home-new-pl-btn" onclick="loadPublicFeed()" style="background:none;border:1px solid var(--border);color:var(--sub);">
@@ -2202,7 +2192,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
       <div class="pub-grid" id="pub-grid">
         <div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;">
           <i></i>
-          <h3>Memuat playlist publik...</h3>
+          <h3>Loading public playlists...</h3>
         </div>
       </div>
     </div>
@@ -2212,8 +2202,8 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div id="search-view" class="main-view">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="q" type="text" placeholder="Cari artis atau judul lagu..." autocomplete="off" spellcheck="false">
-      <button id="btn-search">Cari</button>
+      <input id="q" type="text" placeholder="Search artist or song title..." autocomplete="off" spellcheck="false">
+      <button id="btn-search">Search</button>
       <!-- SEARCH SUGGESTIONS DROPDOWN -->
       <div id="search-suggestions"></div>
     </div>
@@ -2228,7 +2218,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
           <div class="hero-btns">
             <button class="hbtn" id="h-add-pl">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-              Tambah ke Playlist
+              Add to Playlist
             </button>
           </div>
         </div>
@@ -2242,8 +2232,8 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 
     <div id="welcome" class="empty">
       <i></i>
-      <h3>Temukan Musikmu</h3>
-      <p>Ketik nama artis atau judul lagu lalu tekan Cari.<br>Nikmati lirik sinkron real-time.<br><span style="color:var(--green);font-size:.75rem"> Playlist tersimpan otomatis ke akun kamu</span></p>
+      <h3>Discover Your Music</h3>
+      <p>Type an artist name or song title and press Search.<br>Enjoy real-time synced lyrics.<br><span style="color:var(--green);font-size:.75rem"> Playlists auto-saved to your account</span></p>
     </div>
   </div>
 
@@ -2265,12 +2255,12 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         <div class="pv-meta">
           <div class="pv-type">Playlist</div>
           <div class="pv-title" id="pv-title" ondblclick="startRenamePlaylist()">—</div>
-          <div class="pv-sub" id="pv-sub">0 lagu</div>
+          <div class="pv-sub" id="pv-sub">0 songs</div>
         </div>
       </div>
     </div>
     <div class="pv-actions">
-      <button class="pv-play-btn" onclick="playAllPlaylist()" title="Putar Semua">
+      <button class="pv-play-btn" onclick="playAllPlaylist()" title="Play All">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </button>
       <button class="pv-action-btn" onclick="startRenamePlaylist()">
@@ -2295,18 +2285,18 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
       </button>
     </div>
     <div class="pv-tracks" id="pv-tracks">
-      <div class="pv-empty"><div class="pv-empty-icon"></div>Belum ada lagu di playlist ini.<br>Klik "Tambah Lagu" untuk mulai menambahkan.</div>
+      <div class="pv-empty"><div class="pv-empty-icon"></div>No songs in this playlist yet.<br>Click "Add Song" to start adding.</div>
     </div>
     <!-- COMMENT SECTION (playlist publik) -->
     <div class="comment-section" id="pv-comment-section" style="display:none;">
       <div class="comment-section-title">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Komentar
+        Comments
       </div>
       <div class="comment-input-wrap" id="pv-comment-input-wrap">
         <div class="comment-avatar-self" id="pv-comment-self-avatar"></div>
         <div class="comment-box">
-          <textarea class="comment-textarea" id="pv-comment-textarea" placeholder="Tulis komentar..." rows="1"></textarea>
+          <textarea class="comment-textarea" id="pv-comment-textarea" placeholder="Write a comment..." rows="1"></textarea>
           <div id="pv-comment-photo-preview-row" style="display:none;" class="reply-preview-row">
             <img id="pv-comment-photo-preview" class="comment-photo-preview" src="" alt="">
             <button class="reply-preview-remove" onclick="removePvCommentPhoto()" title="Hapus foto"></button>
@@ -2325,7 +2315,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         </div>
       </div>
       <div class="comment-list" id="pv-comment-list">
-        <div class="comment-loading">Memuat komentar...</div>
+        <div class="comment-loading">Loading comments...</div>
       </div>
     </div>
   </div>
@@ -2333,15 +2323,15 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <!-- SONG FINDER VIEW -->
   <div id="finder-view" class="main-view" style="display:none;">
     <div class="finder-hero">
-      <div class="finder-hero-title"> Cari Judul Lagu dari Video</div>
-      <div class="finder-hero-sub">Upload video, kami kenali lagunya secara otomatis</div>
+      <div class="finder-hero-title"> Find Song Title from Video</div>
+      <div class="finder-hero-sub">Upload a video and we'll identify the song automatically</div>
     </div>
 
     <!-- Drop Zone -->
     <div class="finder-drop-zone" id="finder-drop-zone" onclick="document.getElementById('finder-file-input').click()">
       <div class="finder-drop-icon"></div>
       <div class="finder-drop-title">Seret & Lepas Video di Sini</div>
-      <div class="finder-drop-sub">atau klik untuk memilih file dari perangkat kamu</div>
+      <div class="finder-drop-sub">or click to select a file from your device</div>
       <div class="finder-drop-formats">
         <span class="finder-format-badge">MP4</span>
         <span class="finder-format-badge">MOV</span>
@@ -2391,7 +2381,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         <img class="finder-album-art" id="finder-album-art" src="" alt="Album Art" onerror="this.style.display='none';document.getElementById('finder-album-ph').style.display='flex'">
         <div class="finder-album-placeholder" id="finder-album-ph" style="display:none;"></div>
         <div class="finder-result-info">
-          <div class="finder-song-label"> Lagu Ditemukan</div>
+          <div class="finder-song-label"> Song Found</div>
           <div class="finder-song-title" id="finder-song-title">—</div>
           <div class="finder-song-artist" id="finder-song-artist">—</div>
           <div class="finder-song-album" id="finder-song-album"></div>
@@ -2413,14 +2403,14 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="finder-no-result" id="finder-no-result">
       <span class="finder-no-result-icon"></span>
       <div class="finder-no-result-title">No song detected</div>
-      <div class="finder-no-result-sub">Coba video lain dengan audio yang lebih jelas, atau pastikan videonya mengandung musik.</div>
+      <div class="finder-no-result-sub">Try another video with clearer audio, or make sure the video contains music.</div>
     </div>
 
     <!-- History -->
     <div class="finder-history-section" id="finder-history-section" style="display:none;">
       <div class="finder-history-title">
         <span>Riwayat Pencarian</span>
-        <button class="finder-history-clear" onclick="clearFinderHistory()">Hapus Semua</button>
+        <button class="finder-history-clear" onclick="clearFinderHistory()">Clear All</button>
       </div>
       <div class="finder-history-list" id="finder-history-list"></div>
     </div>
@@ -2439,21 +2429,21 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div class="cm-overlay" onclick="closeCommentModal()"></div>
   <div class="cm-sheet">
     <div class="cm-header">
-      <div class="cm-title" id="cm-modal-title">Komentar</div>
+      <div class="cm-title" id="cm-modal-title">Comments</div>
       <button class="cm-close" onclick="closeCommentModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="cm-body" id="cm-modal-body">
       <div class="comment-list" id="cm-modal-list">
-        <div class="comment-loading">Memuat komentar...</div>
+        <div class="comment-loading">Loading comments...</div>
       </div>
     </div>
     <div class="cm-input-wrap">
       <div class="comment-input-wrap" style="margin-bottom:0;">
         <div class="comment-avatar-self" id="cm-modal-self-avatar"></div>
         <div class="comment-box">
-          <textarea class="comment-textarea" id="cm-modal-textarea" placeholder="Tulis komentar..." rows="1"></textarea>
+          <textarea class="comment-textarea" id="cm-modal-textarea" placeholder="Write a comment..." rows="1"></textarea>
           <div id="cm-modal-photo-preview-row" style="display:none;" class="reply-preview-row">
             <img id="cm-modal-photo-preview" class="comment-photo-preview" src="" alt="">
             <button class="reply-preview-remove" onclick="removeCmModalPhoto()" title="Hapus foto"></button>
@@ -2480,7 +2470,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div class="lyr-head">
     <div class="lyr-ttl">Lirik <span class="lyr-badge">Live</span></div>
     <div style="display:flex;align-items:center;gap:4px;">
-    <button id="lyr-translate-btn" onclick="toggleLyricsTranslation()" title="Terjemahkan lirik ke Bahasa Indonesia">
+    <button id="lyr-translate-btn" onclick="toggleLyricsTranslation()" title="Translate lyrics to English">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
       Terjemahan
     </button>
@@ -2504,9 +2494,9 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   </div>
   <div class="lyr-body">
     <div class="lyr-fade-t"></div>
-    <div id="lyr-lines"><div class="lyr-empty"><i></i>Lirik muncul saat lagu diputar</div></div>
+    <div id="lyr-lines"><div class="lyr-empty"><i></i>Lyrics appear when a song plays</div></div>
     <div class="lyr-fade-b"></div>
-    <div id="lyr-translate-toast"> Memuat terjemahan...</div>
+    <div id="lyr-translate-toast"> Loading translation...</div>
   </div>
 </aside>
 
@@ -2515,7 +2505,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div class="bar-track" onclick="openFS()">
     <div class="bar-ph" id="bar-thumb"></div>
     <div class="bar-info">
-      <div class="bar-title" id="bar-title">Tidak Ada Lagu</div>
+      <div class="bar-title" id="bar-title">No Song Playing</div>
       <div class="bar-artist" id="bar-artist">—</div>
     </div>
   </div>
@@ -2554,17 +2544,17 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <!-- Cover Photo Modal -->
 <div id="ph-modal" class="modal-bg" style="display:none">
   <div class="modal">
-    <h3>Ganti Foto Playlist</h3>
+    <h3>Change Playlist Photo</h3>
     <p id="ph-sub">Pilih foto cover untuk playlist ini</p>
     <div class="drop-z" id="drop-z">
       <i></i>
-      <div>Klik atau seret foto ke sini</div>
+      <div>Click or drag photo here</div>
       <small>JPG · PNG · WebP</small>
     </div>
     <input type="file" id="ph-inp" accept="image/*">
     <div class="mbtns">
-      <button class="btn-s" id="ph-cancel">Batal</button>
-      <button class="btn-p" id="ph-save">Simpan</button>
+      <button class="btn-s" id="ph-cancel">Cancel</button>
+      <button class="btn-p" id="ph-save">Save</button>
     </div>
   </div>
 </div>
@@ -2572,11 +2562,11 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <!-- New Playlist Modal -->
 <div id="new-pl-modal" class="modal-bg" style="display:none">
   <div class="modal">
-    <h3>Buat Playlist Baru</h3>
-    <p>Berikan nama untuk playlist kamu</p>
-    <input type="text" class="modal-input" id="new-pl-name" placeholder="Nama playlist..." maxlength="40">
+    <h3>Create Playlist Baru</h3>
+    <p>Give your playlist a name</p>
+    <input type="text" class="modal-input" id="new-pl-name" placeholder="Playlist name..." maxlength="40">
     <div class="mbtns">
-      <button class="btn-s" onclick="closeNewPlaylistModal()">Batal</button>
+      <button class="btn-s" onclick="closeNewPlaylistModal()">Cancel</button>
       <button class="btn-p" onclick="createPlaylist()">Buat</button>
     </div>
   </div>
@@ -2585,11 +2575,11 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <!-- Add Song to Playlist Modal (from search) -->
 <div id="add-song-modal" class="modal-bg" style="display:none">
   <div class="modal">
-    <h3>Tambah ke Playlist</h3>
+    <h3>Add to Playlist</h3>
     <p id="add-song-track-name">Pilih playlist tujuan</p>
     <div class="modal-pl-list" id="add-song-pl-list"></div>
     <div class="mbtns">
-      <button class="btn-s" onclick="closeAddSongModal()">Batal</button>
+      <button class="btn-s" onclick="closeAddSongModal()">Cancel</button>
     </div>
   </div>
 </div>
@@ -2599,10 +2589,10 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div class="modal">
     <h3>Ubah Nama Playlist</h3>
     <p>Masukkan nama baru</p>
-    <input type="text" class="modal-input" id="rename-input" placeholder="Nama playlist..." maxlength="40">
+    <input type="text" class="modal-input" id="rename-input" placeholder="Playlist name..." maxlength="40">
     <div class="mbtns">
-      <button class="btn-s" onclick="closeRenameModal()">Batal</button>
-      <button class="btn-p" onclick="saveRename()">Simpan</button>
+      <button class="btn-s" onclick="closeRenameModal()">Cancel</button>
+      <button class="btn-p" onclick="saveRename()">Save</button>
     </div>
   </div>
 </div>
@@ -2659,26 +2649,16 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
       <span class="fs-t r" id="fs-t-tot">0:00</span>
     </div>
     <div id="fs-ctrl">
-      <div id="fs-song-info">
-        <div id="fs-album-art-ph">🎵</div>
-        <div id="fs-song-text">
-          <div id="fs-song-title">—</div>
-          <div id="fs-song-artist">—</div>
-        </div>
-      </div>
-      <div id="fs-ctrl-btns">
-        <button class="fs-btn" id="fs-btn-prev">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
-        </button>
-        <button id="fs-btn-play">
-          <svg id="fs-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="fs-ico-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
-        <button class="fs-btn" id="fs-btn-next">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m6 18 8.5-6L6 6v12zm2-6 8.5 6V6L8 12z"/></svg>
-        </button>
-      </div>
-      <div></div><!-- spacer kanan agar tombol tetap di tengah -->
+      <button class="fs-btn" id="fs-btn-prev">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+      </button>
+      <button id="fs-btn-play">
+        <svg id="fs-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="fs-ico-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <button class="fs-btn" id="fs-btn-next">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="m6 18 8.5-6L6 6v12zm2-6 8.5 6V6L8 12z"/></svg>
+      </button>
     </div>
   </div>
   <!-- Hint keluar pure mode -->
@@ -2688,7 +2668,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <div id="mob-nav" style="display:none">
   <button class="mob-nav-btn on" id="mob-btn-home" onclick="mobNav('home')">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-    Beranda
+    Home
   </button>
   <button class="mob-nav-btn" id="mob-btn-search" onclick="mobNav('search')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -2787,7 +2767,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
   <div id="notif-list">
     <div class="notif-empty">
       <span></span>
-      Belum ada notifikasi.<br>Saat ada yang like atau<br>komentar playlistmu,<br>akan muncul di sini.
+      No notifications yet.<br>Saat ada yang like atau<br>komentar playlistmu,<br>akan muncul di sini.
     </div>
   </div>
 </div>
@@ -2825,9 +2805,9 @@ const WORKER = 'https://fancy-band-d65b.alpinofficial26.workers.dev';
 let YTP = null;
 let playing = false, cur = 0, tot = 0, raf = null;
 let lyrCache = {}, lyrs = [], curTrack = null;
-let curQueue = []; // lagu yang sedang dalam antrian putar
+let curQueue = []; // songs yang sedang dalam antrian putar
 
-// ── Pre-fetch cache: simpan videoId lagu berikutnya saat foreground ──────────
+// ── Pre-fetch cache: simpan videoId songs berikutnya saat foreground ──────────
 let _prefetchCache = {}; // key: track._query → { videoId, lyrs }
 let _prefetching   = new Set(); // query yang sedang di-fetch
 
@@ -3000,8 +2980,8 @@ async function loadAllPlaylistsFromCloud() {
     renderHomeGrid();
     setCloudStatus('synced', 'Tersimpan · ' + Object.keys(playlists).length + ' playlist');
   } catch(e) {
-    setCloudStatus('', 'Gagal memuat: ' + e.message);
-    toast(' Gagal memuat playlist');
+    setCloudStatus('', 'Failed to load: ' + e.message);
+    toast(' Failed to load playlist');
   }
 }
 
@@ -3130,7 +3110,7 @@ function closeRenameModal() {
 }
 function saveRename() {
   const name = document.getElementById('rename-input').value.trim();
-  if (!name) { toast(' Nama tidak boleh kosong'); return; }
+  if (!name) { toast(' Nama tidak bby kosong'); return; }
   if (!currentPlaylistId || !playlists[currentPlaylistId]) return;
   playlists[currentPlaylistId].name = name;
   closeRenameModal();
@@ -3173,7 +3153,7 @@ function removeTrackFromPlaylist(plId, idx) {
 let pendingTrackToAdd = null;
 function openAddSongModal(track) {
   pendingTrackToAdd = track || curTrack;
-  if (!pendingTrackToAdd) { toast(' Tidak ada lagu yang dipilih'); return; }
+  if (!pendingTrackToAdd) { toast(' Tidak ada songs yang dipilih'); return; }
   document.getElementById('add-song-track-name').textContent = '"' + pendingTrackToAdd.title + '"';
   renderAddSongPLList();
   document.getElementById('add-song-modal').style.display = 'flex';
@@ -3186,7 +3166,7 @@ function renderAddSongPLList() {
   const c = document.getElementById('add-song-pl-list');
   const keys = Object.keys(playlists);
   if (!keys.length) {
-    c.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:.8rem;padding:14px">Belum ada playlist.<br><button onclick="closeAddSongModal();openNewPlaylistModal();" style="margin-top:8px;background:var(--green);border:none;border-radius:50px;padding:6px 16px;color:#fff;font-family:var(--f);font-size:.78rem;cursor:pointer;">+ Buat Playlist</button></div>';
+    c.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:.8rem;padding:14px">No playlists yet.<br><button onclick="closeAddSongModal();openNewPlaylistModal();" style="margin-top:8px;background:var(--green);border:none;border-radius:50px;padding:6px 16px;color:#fff;font-family:var(--f);font-size:.78rem;cursor:pointer;">+ Create Playlist</button></div>';
     return;
   }
   c.innerHTML = '';
@@ -3196,7 +3176,7 @@ function renderAddSongPLList() {
     d.className = 'modal-pl-item';
     d.innerHTML = `
       <div class="modal-pl-icon">${pl.cover ? `<img src="${esc(pl.cover)}" style="width:36px;height:36px;border-radius:6px;object-fit:cover;">` : ''}</div>
-      <div><div class="modal-pl-name">${esc(pl.name)}</div><div class="modal-pl-count">${pl.tracks.length} lagu</div></div>
+      <div><div class="modal-pl-name">${esc(pl.name)}</div><div class="modal-pl-count">${pl.tracks.length} songs</div></div>
     `;
     d.onclick = () => {
       const ok = addTrackToPlaylist(id, pendingTrackToAdd);
@@ -3222,9 +3202,9 @@ function toggleReorderMode() {
   if (btn) btn.classList.toggle('active', _reorderMode);
   if (tracksEl) tracksEl.classList.toggle('reorder-mode', _reorderMode);
   if (_reorderMode) {
-    toast(' Mode atur urutan aktif — seret lagu untuk mengubah urutan');
+    toast(' Mode atur urutan aktif — seret songs untuk mengubah urutan');
   } else {
-    toast(' Urutan lagu disimpan');
+    toast(' Urutan songs disimpan');
     scheduleSave();
   }
   if (currentPlaylistId) renderPlaylistView(currentPlaylistId);
@@ -3240,7 +3220,7 @@ function _reorderTrack(plId, fromIdx, toIdx) {
   if (curQueue.length && currentPlaylistId === plId) curQueue = [...tracks];
   scheduleSave();
   renderPlaylistView(plId);
-  toast('↕ Urutan lagu diperbarui');
+  toast('↕ Urutan songs diperbarui');
 }
 
 // ─── Playlist View Render ─────────────────────────────────
@@ -3258,7 +3238,7 @@ function renderPlaylistView(plId) {
     }
   }
   document.getElementById('pv-title').textContent = pl.name;
-  document.getElementById('pv-sub').textContent = pl.tracks.length + ' lagu';
+  document.getElementById('pv-sub').textContent = pl.tracks.length + ' songs';
 
   // Sync reorder button state
   const btn = document.getElementById('pv-reorder-btn');
@@ -3269,7 +3249,7 @@ function renderPlaylistView(plId) {
   if (!pl.tracks.length) {
     _reorderMode = false;
     if (btn) btn.classList.remove('active');
-    c.innerHTML = `<div class="pv-empty"><div class="pv-empty-icon"></div>Belum ada lagu di playlist ini.<br>Klik "Tambah Lagu" untuk mulai menambahkan.</div>`;
+    c.innerHTML = `<div class="pv-empty"><div class="pv-empty-icon"></div>No songs in this playlist yet.<br>Click "Add Song" to start adding.</div>`;
     return;
   }
 
@@ -3407,7 +3387,7 @@ function playAllPlaylist() {
   }
   if (!currentPlaylistId) return;
   const pl = playlists[currentPlaylistId];
-  if (!pl || !pl.tracks.length) { toast(' Playlist kosong'); return; }
+  if (!pl || !pl.tracks.length) { toast(' Playlist is empty'); return; }
   curQueue = [...pl.tracks];
   loadPlay(pl.tracks[0], currentPlaylistId);
 }
@@ -3417,7 +3397,7 @@ function renderSidebarPlaylists() {
   const c = document.getElementById('pl-list');
   const keys = Object.keys(playlists);
   if (!keys.length) {
-    c.innerHTML = '<div class="pl-empty"><span></span>Belum ada playlist</div>';
+    c.innerHTML = '<div class="pl-empty"><span></span>No playlists yet</div>';
     return;
   }
   c.innerHTML = '';
@@ -3431,7 +3411,7 @@ function renderSidebarPlaylists() {
       ${src ? `<img class="pl-thumb" src="${esc(src)}" onerror="this.style.display='none'" alt="">` : `<div class="pl-ph"></div>`}
       <div class="pl-info">
         <div class="pl-name">${esc(pl.name)}</div>
-        <div class="pl-art">${pl.tracks.length} lagu</div>
+        <div class="pl-art">${pl.tracks.length} songs</div>
       </div>
       <div class="pl-acts">
         <button class="ic-btn del" title="Hapus playlist"></button>
@@ -3458,7 +3438,7 @@ function renderHomeGrid() {
   const c = document.getElementById('playlists-grid');
   const keys = Object.keys(playlists);
   if (!keys.length) {
-    c.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:40px 0"><i></i><h3>Belum Ada Playlist</h3><p>Klik "+ Buat Playlist" untuk memulai</p></div>';
+    c.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:40px 0"><i></i><h3>No Playlists Yet</h3><p>Click &quot;+ Create Playlist&quot; to get started</p></div>';
     return;
   }
   c.innerHTML = '';
@@ -3470,7 +3450,7 @@ function renderHomeGrid() {
     card.innerHTML = `
       ${src ? `<img class="pg-img" src="${esc(src)}" alt="cover" onerror="this.style.display='none'">` : `<div class="pg-cover"></div>`}
       <div class="pg-name">${esc(pl.name)}</div>
-      <div class="pg-count">${pl.tracks.length} lagu</div>
+      <div class="pg-count">${pl.tracks.length} songs</div>
       <button class="pg-play-btn" title="Putar semua">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </button>
@@ -3490,7 +3470,7 @@ function renderHomeGrid() {
 function openCoverModal() {
   if (!currentPlaylistId) return;
   pendingCoverData = null;
-  document.getElementById('drop-z').innerHTML = '<i></i><div>Klik atau seret foto ke sini</div><small>JPG · PNG · WebP</small>';
+  document.getElementById('drop-z').innerHTML = '<i></i><div>Click or drag photo here</div><small>JPG · PNG · WebP</small>';
   document.getElementById('ph-modal').style.display = 'flex';
 }
 document.getElementById('drop-z').addEventListener('click', () => document.getElementById('ph-inp').click());
@@ -3552,7 +3532,7 @@ function _createPlayer(videoId) {
             // Hanya update tot jika durasi valid
             if(newDur > 0) tot = newDur;
             // Update _playStartWall & _playStartPos hanya jika:
-            // 1. Ini memang awal lagu baru (cur == 0 dan posisi YTP juga 0), ATAU
+            // 1. Ini memang awal songs baru (cur == 0 dan posisi YTP juga 0), ATAU
             // 2. Posisi YTP valid dan berbeda signifikan dari estimasi wall-clock kita
             const wallEstimate = _playStartWall > 0 ? _playStartPos + (Date.now() - _playStartWall)/1000 : 0;
             if(newCur > 0){
@@ -3563,7 +3543,7 @@ function _createPlayer(videoId) {
                 _playStartPos = newCur;
               }
             } else if(_playStartWall === 0){
-              // Posisi 0 dan belum pernah di-set (memang awal lagu)
+              // Posisi 0 dan belum pernah di-set (memang awal songs)
               cur = 0;
               _playStartWall = Date.now();
               _playStartPos = 0;
@@ -3577,7 +3557,7 @@ function _createPlayer(videoId) {
           if(document.hidden) _startBgInterval();
           // Update UI untuk track yang mungkin diganti lewat loadVideoById (background)
           if(curTrack){ _updateUIForTrack(curTrack); }
-          // Pre-fetch lagu berikutnya sesegera mungkin (foreground maupun background)
+          // Pre-fetch songs berikutnya sesegera mungkin (foreground maupun background)
           setTimeout(_prefetchNext, 500);
         }
         else if(e.data===YT.PlayerState.PAUSED){ playing=false; setPB(false); cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer(); }
@@ -3586,7 +3566,7 @@ function _createPlayer(videoId) {
           if(!_nextGuarded){ _nextGuarded=true; playNext(); }
         }
       },
-      onError(e){ if(e.data===101||e.data===150) toast(' Video diblokir, coba lagu lain'); }
+      onError(e){ if(e.data===101||e.data===150) toast(' Video diblokir, coba songs lain'); }
     }
   });
 }
@@ -3639,14 +3619,14 @@ function _resumeAudioCtx(){
   }catch(e){}
 }
 
-// ─── Timer lagu berbasis setTimeout — tidak bergantung iframe sama sekali ───────
+// ─── Timer songs berbasis setTimeout — tidak bergantung iframe sama sekali ───────
 // setTimeout() tetap jalan di background meski rAF & iframe dibekukan browser
 let _songTimer     = null;  // setTimeout handle
 let _playStartWall = 0;     // Date.now() saat mulai/resume
 let _playStartPos  = 0;     // posisi (detik) saat mulai/resume
 let _bgInterval    = null;  // interval cadangan
 let _nextGuarded   = false; // cegah playNext() ganda dalam satu siklus
-let _pendingNext   = false; // lagu sudah selesai di background, tunggu foreground untuk lanjut
+let _pendingNext   = false; // songs sudah selesai di background, tunggu foreground untuk lanjut
 let _playGen       = 0;     // generasi pemutaran — naik setiap loadPlay/playNext baru; timer hanya valid jika cocok
 
 function _clearSongTimer(){ if(_songTimer){ clearTimeout(_songTimer); _songTimer=null; } }
@@ -3673,7 +3653,7 @@ function _armSongTimer(){
   const posNow = _playStartPos + elapsed;
   const remaining = Math.max((duration - posNow) * 1000, 500);
 
-  // Tangkap generasi saat ini — timer hanya berlaku untuk lagu ini
+  // Tangkap generasi saat ini — timer hanya berlaku untuk songs ini
   const myGen = _playGen;
 
   _songTimer = setTimeout(()=>{
@@ -3752,7 +3732,7 @@ document.addEventListener('visibilitychange', ()=>{
       _ensureAudioCtx();    // pastikan AudioContext tetap hidup
       _armSongTimer();      // timer berbasis setTimeout
       _startBgInterval();   // interval cadangan & sinkronisasi posisi
-      // Pastikan cache lagu berikutnya sudah siap sebelum lagu berakhir
+      // Pastikan cache songs berikutnya sudah siap sebelum songs berakhir
       _prefetchNext();
     }
   } else {
@@ -3762,10 +3742,10 @@ document.addEventListener('visibilitychange', ()=>{
 
     // Jika ada proses fetch background yang sedang berjalan, biarkan selesai
     // (ditandai _pendingNext=true tapi _playGen masih cocok)
-    // Jika lagu sudah selesai di background dan tidak bisa diputar → lanjut sekarang
+    // Jika songs sudah selesai di background dan tidak bisa diputar → lanjut sekarang
     if(_pendingNext){
       // Cek apakah ini benar-benar stuck (bukan sedang fetch)
-      // Langsung trigger loadPlay untuk lagu berikutnya
+      // Langsung trigger loadPlay untuk songs berikutnya
       _pendingNext = false;
       _clearSongTimer();
       const i = _qIdx();
@@ -3778,12 +3758,12 @@ document.addEventListener('visibilitychange', ()=>{
       const state = _ytSafe(()=>YTP.getPlayerState(), -1);
       if(state === 0){ _clearSongTimer(); playing=false; setPB(false); playNext(); return; }
       if(state === 1 || state === -1){
-        // Cek apakah lagu sudah seharusnya selesai berdasarkan wall-clock
+        // Cek apakah songs sudah seharusnya selesai berdasarkan wall-clock
         if(tot > 0 && _playStartWall > 0){
           const wallElapsed = (Date.now() - _playStartWall) / 1000;
           const estimatedPos = _playStartPos + wallElapsed;
           if(estimatedPos >= tot - 1){
-            // Durasi terlampaui — anggap lagu sudah selesai
+            // Durasi terlampaui — anggap songs sudah selesai
             _clearSongTimer(); playing=false; setPB(false); cancelAnimationFrame(raf);
             playNext(); return;
           }
@@ -3845,7 +3825,7 @@ function _qIdx(){
   return curQueue.findIndex(t => t._query === curTrack._query);
 }
 
-// Pre-fetch videoId + lirik untuk lagu berikutnya saat masih foreground
+// Pre-fetch videoId + lirik untuk songs berikutnya saat masih foreground
 async function _prefetchNext(){
   if(!curQueue.length||!curTrack) return;
   const i = _qIdx();
@@ -3879,7 +3859,7 @@ function playNext(){
         // Reset state
         cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer();
         playing=false; cur=0; tot=0;
-        _playGen++;  // invalidasi timer lagu sebelumnya
+        _playGen++;  // invalidasi timer songs sebelumnya
         _nextGuarded=false; _pendingNext=false;
         curTrack = next;
         lyrs = cached.lyrs || [];
@@ -3887,7 +3867,7 @@ function playNext(){
         _setupMediaSession(next);
         // Ganti video di player yang sudah ada — TANPA fetch baru
         YTP.loadVideoById({ videoId: cached.videoId, suggestedQuality: 'small' });
-        // Setelah ganti lagu, prefetch lagu berikutnya
+        // Setelah ganti songs, prefetch songs berikutnya
         setTimeout(_prefetchNext, 1000);
         // onStateChange PLAYING akan arm timer & interval otomatis
         return;
@@ -3908,7 +3888,7 @@ function playNext(){
       resolveVid(searchQ).then(v => v || resolveVid(`${next.artist} ${next.title}`)),
       fetchLyr(cl, next.artist)
     ]).then(([videoId, lines]) => {
-      // Batalkan jika generasi sudah berganti (user memilih lagu lain)
+      // Batalkan jika generasi sudah berganti (user memilih songs lain)
       if(myGen !== _playGen) return;
       if(!_pendingNext) return;
       _pendingNext = false;
@@ -3923,7 +3903,7 @@ function playNext(){
           _curSpeedFactor = detectSpeedFactor(next.title);
           _setupMediaSession(next);
           YTP.loadVideoById({ videoId, suggestedQuality: 'small' });
-          // Prefetch lagu setelah ini
+          // Prefetch songs setelah ini
           setTimeout(_prefetchNext, 1000);
         } catch(e){ _pendingNext = false; }
       }
@@ -4015,7 +3995,7 @@ function _updateUIForTrack(track){
 }
 
 async function loadPlay(track, fromPlId){
-  _playGen++;  // invalidasi semua timer/guard dari lagu sebelumnya
+  _playGen++;  // invalidasi semua timer/guard dari songs sebelumnya
   cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer(); playing=false; cur=0; tot=0; curTrack=track; lyrs=[];
   _nextGuarded=false;
   _pendingNext=false;
@@ -4037,7 +4017,7 @@ async function loadPlay(track, fromPlId){
   document.getElementById('bar-artist').textContent=track.artist;
 
   // Lyrics panel reset
-  document.getElementById('lyr-lines').innerHTML='<div class="lyr-empty"><i></i>Mencari & memuat lagu...</div>';
+  document.getElementById('lyr-lines').innerHTML='<div class="lyr-empty"><i></i>Mencari & memuat songs...</div>';
   setPB(false); updProg();
   pickFSColor();
   document.getElementById('fs-artist-name').textContent=track.title;
@@ -4047,7 +4027,7 @@ async function loadPlay(track, fromPlId){
   openFS();
 
   const searchQ=`${track.artist} ${track.title} official audio`; toast(' Mencari video...');
-  // Deteksi apakah lagu ini speed up atau slowed, lalu sesuaikan timing lirik
+  // Deteksi apakah songs ini speed up atau slowed, lalu sesuaikan timing lirik
   _curSpeedFactor = detectSpeedFactor(track.title);
   _lyrOffset = 0;
   // Tampilkan/sembunyikan offset bar
@@ -4064,13 +4044,13 @@ async function loadPlay(track, fromPlId){
   const cl=cleanT(track.title);
   const [videoId,lines]=await Promise.all([resolveVid(searchQ),fetchLyr(cl,track.artist)]);
   if(videoId){
-    toast(' Memutar lagu...');
-    await initPlayer(videoId).catch(e=>{console.error('initPlayer error:',e);toast(' Gagal memuat video, coba lagu lain');});
+    toast(' Memutar songs...');
+    await initPlayer(videoId).catch(e=>{console.error('initPlayer error:',e);toast(' Failed to load video, coba songs lain');});
   }else{
     toast(' Mencoba fallback...');
     const fallbackId=await resolveVid(`${track.artist} ${track.title}`);
-    if(fallbackId){ await initPlayer(fallbackId).catch(()=>toast(' Gagal memuat video')); }
-    else{ toast(' Video tidak ditemukan. Coba lagu lain.'); }
+    if(fallbackId){ await initPlayer(fallbackId).catch(()=>toast(' Failed to load video')); }
+    else{ toast(' Video tidak ditemukan. Coba songs lain.'); }
   }
   lyrs=lines||[];
   // Set song key for translation
@@ -4086,7 +4066,7 @@ async function loadPlay(track, fromPlId){
   updateFSLyr();
 }
 
-// ── Deteksi faktor kecepatan dari judul lagu ──────────────
+// ── Deteksi faktor kecepatan dari judul songs ──────────────
 // Speed up  → audio lebih cepat → timestamp lirik original harus dibagi faktor (>1)
 // Slowed    → audio lebih lambat → timestamp lirik original harus dibagi faktor (<1)
 function detectSpeedFactor(title){
@@ -4095,7 +4075,7 @@ function detectSpeedFactor(title){
   return 1.0;
 }
 
-// Faktor kecepatan lagu yang sedang diputar (global)
+// Faktor kecepatan songs yang sedang diputar (global)
 let _curSpeedFactor = 1.0;
 // Offset manual lirik dalam detik (bisa negatif = maju, positif = mundur)
 let _lyrOffset = 0;
@@ -4347,24 +4327,6 @@ function setBarImg(t){
   const src=t.photo||t.thumb; const el=document.getElementById('bar-thumb');
   if(src){el.outerHTML=`<img class="bar-thumb" id="bar-thumb" src="${esc(src)}" alt="" style="cursor:pointer" onclick="openFS()">`;}
   else if(el.tagName==='IMG'){el.outerHTML=`<div class="bar-ph" id="bar-thumb" style="cursor:pointer" onclick="openFS()"></div>`;}
-  // Update fullscreen album art + song info
-  _updateFSAlbumArt(t);
-}
-
-function _updateFSAlbumArt(t){
-  const src = t.photo || t.thumb;
-  const titleEl = document.getElementById('fs-song-title');
-  const artistEl = document.getElementById('fs-song-artist');
-  if(titleEl) titleEl.textContent = t.title || '—';
-  if(artistEl) artistEl.textContent = t.artist || '—';
-  const ph = document.getElementById('fs-album-art-ph');
-  const img = document.getElementById('fs-album-art');
-  if(src){
-    if(img){ img.src = src; }
-    else if(ph){ ph.outerHTML = `<img id="fs-album-art" src="${esc(src)}" alt="" style="width:46px;height:46px;border-radius:9px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 16px rgba(0,0,0,0.5);">`; }
-  } else {
-    if(img){ img.outerHTML = `<div id="fs-album-art-ph" style="width:46px;height:46px;border-radius:9px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(0,0,0,0.5);">🎵</div>`; }
-  }
 }
 
 // ─── Controls ─────────────────────────────────────────────
@@ -4713,7 +4675,7 @@ initMobileNav();
 const FS_COLORS=['#0d2f6b','#0d1f4a','#1a2a6b','#0d3a5c','#0a1f52','#162b6b','#0d3052','#1a1a6b'];
 let _trackColorIdx=0;
 function pickFSColor(){_trackColorIdx++;const c=FS_COLORS[_trackColorIdx%FS_COLORS.length];document.getElementById('fs-lyr').style.background=c;document.getElementById('fs-bg').style.background=c;}
-function openFS(){if(!curTrack)return;document.getElementById('fs-lyr').classList.add('open');document.getElementById('fs-artist-name').textContent=curTrack.title;_updateFSAlbumArt(curTrack);updateFSLyr();updateFSProg();updateFSPB(playing);}
+function openFS(){if(!curTrack)return;document.getElementById('fs-lyr').classList.add('open');document.getElementById('fs-artist-name').textContent=curTrack.title;updateFSLyr();updateFSProg();updateFSPB(playing);}
 function closeFS(){document.getElementById('fs-lyr').classList.remove('open');}
 function _fsInstHTML(){return'<span class="inst-notes"><span style="height:8px"></span><span style="height:18px"></span><span style="height:10px"></span><span style="height:20px"></span><span style="height:12px"></span></span><span class="inst-label"> Instrumental</span>';}
 function updateFSLyr(){
@@ -4812,12 +4774,12 @@ function togglePureMode() {
       <path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>
     </svg>`;
     btn.title = 'Keluar mode penuh';
-    // Sembunyikan tombol back sementara (digantikan oleh hint)
+    // Sembunyikan tombol back sementara (digantikan by hint)
     document.getElementById('fs-back').style.opacity = '0';
     document.getElementById('fs-back').style.pointerEvents = 'none';
   } else {
     fsEl.classList.remove('pure-mode');
-    // Kembalikan ikon expand
+    // Restore expand icon
     btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
       <path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
@@ -4894,7 +4856,7 @@ function clearKineticTimers() {
   if (_kRafId) { cancelAnimationFrame(_kRafId); _kRafId = null; }
 }
 
-// ─── Sistem baru: word-by-word sync via requestAnimationFrame ───
+// ─── New system: word-by-word sync via requestAnimationFrame ───
 
 function updateKinetic() {
   if (_lyrStyle !== 'kinetic' || !lyrs.length) return;
@@ -4991,7 +4953,7 @@ function _kRafWordLoop() {
   for (let i = 0; i < _kWordTimestamps.length; i++) {
     const wt = _kWordTimestamps[i];
     if (nowSec >= wt.t && i > _kWordLitIdx) {
-      // Tandai kata sebelumnya sebagai past
+      // Mark previous word as past
       if (_kWordLitIdx >= 0) {
         const prev = _kWordTimestamps[_kWordLitIdx].el;
         prev.classList.remove('k-word-lit', 'k-word-enter');
@@ -5092,7 +5054,7 @@ async function loadPublicFeed() {
   if (!currentUser) return;
   const grid = document.getElementById('pub-grid');
   const rankGrid = document.getElementById('rank-grid');
-  if (grid) grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i style="font-size:1.8rem"></i><h3>Memuat...</h3></div>';
+  if (grid) grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i style="font-size:1.8rem"></i><h3>Loading...</h3></div>';
 
   try {
     // Load my likes
@@ -5100,7 +5062,7 @@ async function loadPublicFeed() {
     if (!likeSnap.exists()) {
       document.getElementById('public-feed-section').style.display = 'none';
       document.getElementById('top-ranking-section').style.display = 'none';
-      if (grid) grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i></i><h3>Belum ada playlist publik</h3></div>';
+      if (grid) grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i></i><h3>No playlists yet publik</h3></div>';
       return;
     }
 
@@ -5139,7 +5101,7 @@ async function loadPublicFeed() {
 
   } catch(e) {
     console.error('loadPublicFeed error:', e);
-    if (grid) grid.innerHTML = `<div class="empty" style="grid-column:1/-1;font-size:.82rem;color:var(--sub)"> Gagal memuat: ${esc(e.message)}</div>`;
+    if (grid) grid.innerHTML = `<div class="empty" style="grid-column:1/-1;font-size:.82rem;color:var(--sub)"> Failed to load: ${esc(e.message)}</div>`;
   }
 }
 
@@ -5157,7 +5119,7 @@ function renderRanking(items) {
       <div class="rank-cover">${pl.coverThumb ? `<img src="${esc(pl.coverThumb)}" alt="">` : ''}</div>
       <div class="rank-info">
         <div class="rank-name">${esc(pl.name || 'Playlist')}</div>
-        <div class="rank-owner">oleh ${esc(pl.ownerName || 'Anonim')} · ${(pl.tracks||[]).length} lagu</div>
+        <div class="rank-owner">by ${esc(pl.ownerName || 'Anonymous')} · ${(pl.tracks||[]).length} songs</div>
       </div>
       <div class="rank-likes">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -5180,7 +5142,7 @@ function renderPublicGrid(pls) {
   const sorted = [...others, ...mine];
 
   if (!sorted.length) {
-    c.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i></i><h3>Belum ada playlist publik</h3></div>';
+    c.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:24px 0;font-size:.82rem;"><i></i><h3>No playlists yet publik</h3></div>';
     return;
   }
 
@@ -5203,7 +5165,7 @@ function renderPublicGrid(pls) {
           <span class="pub-card-owner">
             ${isOwn
               ? `<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg> Milikmu`
-              : `<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg> ${esc(pl.ownerName || 'Anonim')}`}
+              : `<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg> ${esc(pl.ownerName || 'Anonymous')}`}
           </span>
           <button class="pub-like-btn ${pl.iLiked ? 'liked' : ''}" data-key="${esc(pl.key)}" onclick="toggleLike(event,'${esc(pl.key)}',${pl.iLiked})">
             <svg viewBox="0 0 24 24" fill="${pl.iLiked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -5242,7 +5204,7 @@ async function toggleLike(e, key, currentlyLiked) {
       btn.querySelector('svg').setAttribute('fill','currentColor');
       if (countEl) countEl.textContent = parseInt(countEl.textContent) + 1;
       btn.setAttribute('onclick', `toggleLike(event,'${key}',true)`);
-      toast(' Playlist disukai!');
+      toast(' Playlist liked!');
 
       // ── Kirim notifikasi ke owner playlist ──
       try {
@@ -5276,7 +5238,7 @@ async function toggleLike(e, key, currentlyLiked) {
     // Refresh ranking after like change
     setTimeout(() => loadPublicFeed(), 500);
   } catch(err) {
-    toast(' Gagal: ' + err.message);
+    toast(' Failed: ' + err.message);
   }
 }
 
@@ -5309,7 +5271,7 @@ async function openPublicPlaylist(pl) {
     if (coverEl.tagName === 'IMG') coverEl.outerHTML = `<div class="pv-cover-ph" id="pv-cover"></div>`;
   }
   document.getElementById('pv-title').textContent = pl.name || 'Playlist';
-  document.getElementById('pv-sub').textContent = `${tracks.length} lagu`;
+  document.getElementById('pv-sub').textContent = `${tracks.length} songs`;
 
   // Hide edit actions for other people's playlists
   const isOwn = pl.ownerUid === currentUser?.uid;
@@ -5322,7 +5284,7 @@ async function openPublicPlaylist(pl) {
   if (covEdit) covEdit.style.display = 'none';
 
   // ── Owner Profile Card ──
-  // Hapus card lama kalau ada
+  // Remove old card if exists
   const oldCard = document.getElementById('pv-owner-card');
   if (oldCard) oldCard.remove();
 
@@ -5330,13 +5292,13 @@ async function openPublicPlaylist(pl) {
   const ownerCard = document.createElement('div');
   ownerCard.id = 'pv-owner-card';
   ownerCard.className = 'pv-owner-card';
-  const ownerName = pl.ownerName || 'Anonim';
+  const ownerName = pl.ownerName || 'Anonymous';
   ownerCard.innerHTML = `
     <div class="pv-owner-avatar" id="pv-owner-avatar">
       <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--sub);width:22px;height:22px"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
     </div>
     <div class="pv-owner-info">
-      <div class="pv-owner-label">Dibuat oleh</div>
+      <div class="pv-owner-label">Created by</div>
       <div class="pv-owner-name">${esc(ownerName)}</div>
     </div>
     <div class="pv-owner-arrow">
@@ -5355,7 +5317,7 @@ async function openPublicPlaylist(pl) {
       const profile = snap.val();
       const avatarEl = document.getElementById('pv-owner-avatar');
       if (!avatarEl) return;
-      // Update nama jika lebih baru
+      // Update name if newer
       if (profile.displayName) {
         const nameEl = ownerCard.querySelector('.pv-owner-name');
         if (nameEl) nameEl.textContent = profile.displayName;
@@ -5416,7 +5378,7 @@ function playPublicPlaylist(pl) {
     photo: t.photo || t.thumb || '',
     _query: t._query || (t.artist + '|||' + t.title + '|||0')
   }));
-  if (!tracks.length) { toast(' Playlist kosong'); return; }
+  if (!tracks.length) { toast(' Playlist is empty'); return; }
   curQueue = [...tracks];
   loadPlay(tracks[0], null);
 }
@@ -5432,15 +5394,15 @@ async function togglePublishPlaylist() {
 
   if (isPublic) {
     // Unpublish
-    if (!confirm('Hapus playlist "' + pl.name + '" dari feed publik?')) return;
+    if (!confirm('Remove playlist "' + pl.name + '" from public feed?')) return;
     try {
       await db.ref('public_playlists/' + key).remove();
       pl.public = false;
       scheduleSave();
       updatePublishBtn(false);
-      toast(' Playlist disembunyikan dari publik');
+      toast(' Playlist hidden from public');
       loadPublicFeed();
-    } catch(e) { toast(' Gagal: ' + e.message); }
+    } catch(e) { toast(' Failed: ' + e.message); }
   } else {
     // Publish
     const profileSnap = await db.ref('users/' + currentUser.uid + '/profile').get().catch(()=>null);
@@ -5466,9 +5428,9 @@ async function togglePublishPlaylist() {
       pl.public = true;
       scheduleSave();
       updatePublishBtn(true);
-      toast(' Playlist dipublikasikan!');
+      toast(' Playlist published!');
       loadPublicFeed();
-    } catch(e) { toast(' Gagal: ' + e.message); }
+    } catch(e) { toast(' Failed: ' + e.message); }
   }
 }
 
@@ -5575,10 +5537,10 @@ async function saveLyrBg() {
     await db.ref('users/' + currentUser.uid + '/lyricsBackground').set(_lyrBgData);
     _lyrBgSaved = _lyrBgData;
     applyLyrBg(_lyrBgSaved);
-    toast(' Background lirik berhasil disimpan!');
+    toast(' Lyrics background saved!');
     closeLyrBgModal();
   } catch(e) {
-    toast(' Gagal simpan: ' + e.message);
+    toast(' Save failed: ' + e.message);
   } finally {
     btn.textContent = 'Terapkan';
     btn.disabled = false;
@@ -5586,7 +5548,7 @@ async function saveLyrBg() {
 }
 
 async function resetLyrBg() {
-  if (!confirm('Hapus foto background lirik?')) return;
+  if (!confirm('Delete lyrics background photo?')) return;
   try {
     if (currentUser) await db.ref('users/' + currentUser.uid + '/lyricsBackground').remove();
     _lyrBgSaved = null;
@@ -5598,8 +5560,8 @@ async function resetLyrBg() {
     previewEmpty.style.display = 'flex';
     document.getElementById('lyr-bg-save-btn').style.display = 'none';
     document.getElementById('lyr-bg-reset-btn').style.display = 'none';
-    toast(' Background lirik dihapus');
-  } catch(e) { toast(' Gagal hapus: ' + e.message); }
+    toast(' Lyrics background removed');
+  } catch(e) { toast(' Delete failed: ' + e.message); }
 }
 
 // Hook ke showApp agar background dimuat setelah login
@@ -5642,12 +5604,12 @@ let _notifListeners = []; // simpan ref agar bisa di-detach
 function timeAgo(ts) {
   const diff = Date.now() - ts;
   const m = Math.floor(diff / 60000);
-  if (m < 1) return 'Baru saja';
-  if (m < 60) return m + ' menit lalu';
+  if (m < 1) return 'Just now';
+  if (m < 60) return m + ' minutes ago';
   const h = Math.floor(m / 60);
-  if (h < 24) return h + ' jam lalu';
+  if (h < 24) return h + ' hours ago';
   const d = Math.floor(h / 24);
-  if (d < 7) return d + ' hari lalu';
+  if (d < 7) return d + ' days ago';
   return new Date(ts).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: '2-digit' });
 }
 
@@ -5681,7 +5643,7 @@ async function markAllRead() {
 
 async function clearAllNotifications() {
   if (!currentUser) return;
-  if (!confirm('Hapus semua notifikasi?')) return;
+  if (!confirm('Clear all notifications?')) return;
   await db.ref('users/' + currentUser.uid + '/notifications').remove().catch(() => {});
   renderNotifications([]);
   updateNotifBadge(0);
@@ -5705,7 +5667,7 @@ function renderNotifications(notifs) {
   const list = document.getElementById('notif-list');
   if (!list) return;
   if (!notifs || !notifs.length) {
-    list.innerHTML = `<div class="notif-empty"><span></span>Belum ada notifikasi.<br>Saat ada yang like, komentar,<br>atau kirim pesan anonim ke<br>vibeprofile-mu, akan muncul di sini.</div>`;
+    list.innerHTML = `<div class="notif-empty"><span></span>No notifications yet.<br>When someone likes, comments,<br>or sends an anonymous message to<br>your vibeprofile, it will appear here.</div>`;
     return;
   }
   const sorted = [...notifs].sort((a, b) => (b.ts || 0) - (a.ts || 0));
@@ -5772,7 +5734,7 @@ function renderNotifications(notifs) {
 function startNotifListeners() {
   if (!currentUser) return;
 
-  // Hapus listener lama
+  // Remove old listeners
   _notifListeners.forEach(off => off());
   _notifListeners = [];
 
@@ -5802,9 +5764,9 @@ function startNotifListeners() {
       if (!snap.exists()) return;
       const msg = snap.val();
       // Cek apakah sudah dikonversi jadi notifikasi (berdasarkan ts)
-      // Jika belum punya flag 'notified', push ke notifikasi dan tandai
+      // If no 'notified' flag yet, push to notifications and mark
       if (!msg.notified) {
-        // Tandai supaya tidak duplikat
+        // Mark to avoid duplicates
         db.ref('vibeprofiles/' + spShareId + '/messages/' + snap.key + '/notified').set(true).catch(() => {});
         // Push ke notifikasi user
         const notifId = 'ask_' + snap.key;
@@ -5814,7 +5776,7 @@ function startNotifListeners() {
           sid: spShareId,
           ts: msg.ts || Date.now(),
           read: false,
-          fromName: 'Anonim',
+          fromName: 'Anonymous',
         }).catch(() => {});
       }
     });
@@ -5883,7 +5845,7 @@ async function onPvCommentPhotoSelected(event) {
     prev.src = b64; row.style.display = 'flex';
     const sendBtn = document.getElementById('pv-comment-send-btn');
     if (sendBtn) sendBtn.disabled = false;
-  } catch(e) { toast(' Gagal memuat foto'); }
+  } catch(e) { toast(' Failed to load photo'); }
   event.target.value = '';
 }
 function removePvCommentPhoto() {
@@ -5906,7 +5868,7 @@ async function onCmModalPhotoSelected(event) {
     prev.src = b64; row.style.display = 'flex';
     const sendBtn = document.getElementById('cm-modal-send-btn');
     if (sendBtn) sendBtn.disabled = false;
-  } catch(e) { toast(' Gagal memuat foto'); }
+  } catch(e) { toast(' Failed to load photo'); }
   event.target.value = '';
 }
 function removeCmModalPhoto() {
@@ -6020,7 +5982,7 @@ let _replyPhotoDataMap = {}; // commentId → base64
 
 // ── Toggle like komentar ──
 async function toggleCommentLike(playlistKey, commentId, commentOwnerUid, commentText, btn) {
-  if (!currentUser) { toast(' Login dulu'); return; }
+  if (!currentUser) { toast(' Please log in first'); return; }
   const likeRef = db.ref('public_playlists/' + playlistKey + '/comments/' + commentId + '/likes/' + currentUser.uid);
   const isLiked = btn.classList.contains('liked');
   const countEl = btn.querySelector('.clk-count');
@@ -6077,7 +6039,7 @@ function toggleReplyForm(commentId, playlistKey, commentOwnerUid) {
             Foto
           </button>
           <input type="file" id="reply-photo-input-${esc(commentId)}" accept="image/*" style="display:none;" onchange="onReplyPhotoSelected(event,'${esc(commentId)}')">
-          <button class="reply-cancel-btn" onclick="toggleReplyForm('${esc(commentId)}','${esc(playlistKey)}','${esc(commentOwnerUid)}')">Batal</button>
+          <button class="reply-cancel-btn" onclick="toggleReplyForm('${esc(commentId)}','${esc(playlistKey)}','${esc(commentOwnerUid)}')">Cancel</button>
         </div>
         <button class="reply-send-btn" id="reply-send-${esc(commentId)}" disabled>
           <svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
@@ -6114,7 +6076,7 @@ async function onReplyPhotoSelected(event, commentId) {
     if (row) row.style.display = 'flex';
     const sendBtn = document.getElementById('reply-send-' + commentId);
     if (sendBtn) sendBtn.disabled = false;
-  } catch(e) { toast(' Gagal memuat foto'); }
+  } catch(e) { toast(' Failed to load photo'); }
   event.target.value = '';
 }
 function removeReplyPhoto(commentId) {
@@ -6133,7 +6095,7 @@ async function submitReply(playlistKey, commentId, commentOwnerUid, textareaEl, 
   const text = textareaEl.value.trim();
   const photoData = _replyPhotoDataMap[commentId] || null;
   if (!text && !photoData) return;
-  if (!currentUser) { toast(' Login dulu'); return; }
+  if (!currentUser) { toast(' Please log in first'); return; }
   sendBtn.disabled = true;
   try {
     const profileSnap = await db.ref('users/' + currentUser.uid + '/profile').get().catch(() => null);
@@ -6146,13 +6108,13 @@ async function submitReply(playlistKey, commentId, commentOwnerUid, textareaEl, 
     textareaEl.value = '';
     textareaEl.style.height = 'auto';
     _replyPhotoDataMap[commentId] = null;
-    // Hapus form reply
+    // Remove reply form
     const form = document.getElementById('reply-form-' + commentId);
     if (form) form.remove();
     toast('↩ Balasan terkirim!');
     await sendReplyNotif(playlistKey, commentOwnerUid, text);
   } catch(e) {
-    toast(' Gagal kirim: ' + e.message);
+    toast(' Failed to send: ' + e.message);
     sendBtn.disabled = false;
   }
 }
@@ -6194,13 +6156,13 @@ function buildCommentItem(c, playlistKey, isModal) {
           <div class="comment-reply-avatar">${rPhoto}</div>
           <div class="comment-reply-bubble">
             <div class="comment-reply-meta">
-              <span class="comment-reply-name">${esc(r.name || 'Anonim')}</span>
+              <span class="comment-reply-name">${esc(r.name || 'Anonymous')}</span>
               <span class="comment-reply-time">${timeAgo(r.ts || 0)}</span>
             </div>
             ${r.text ? `<div class="comment-reply-text">${esc(r.text)}</div>` : ''}
             ${rImgHtml}
             <div class="comment-reply-actions">
-              ${isOwnReply ? `<button class="comment-reply-del-btn" title="Hapus" onclick="deleteReply('${esc(playlistKey)}','${esc(c._id)}','${esc(r._id)}')"> Hapus</button>` : ''}
+              ${isOwnReply ? `<button class="comment-reply-del-btn" title="Delete" onclick="deleteReply('${esc(playlistKey)}','${esc(c._id)}','${esc(r._id)}')"> Delete</button>` : ''}
             </div>
           </div>
         </div>`;
@@ -6211,7 +6173,7 @@ function buildCommentItem(c, playlistKey, isModal) {
     <div class="comment-avatar">${photo}</div>
     <div class="comment-bubble">
       <div class="comment-meta">
-        <span class="comment-name">${esc(c.name || 'Anonim')}</span>
+        <span class="comment-name">${esc(c.name || 'Anonymous')}</span>
         <span class="comment-time">${timeAgo(c.ts || 0)}</span>
       </div>
       ${c.text ? `<div class="comment-text">${esc(c.text)}</div>` : ''}
@@ -6231,7 +6193,7 @@ function buildCommentItem(c, playlistKey, isModal) {
       </div>
       ${repliesHtml}
     </div>
-    ${isOwn ? `<button class="comment-del-btn" title="Hapus" onclick="deleteComment('${esc(playlistKey)}','${esc(c._id)}','${isModal ? 'modal' : 'pv'}')"></button>` : ''}
+    ${isOwn ? `<button class="comment-del-btn" title="Delete" onclick="deleteComment('${esc(playlistKey)}','${esc(c._id)}','${isModal ? 'modal' : 'pv'}')"></button>` : ''}
   `;
   return item;
 }
@@ -6239,7 +6201,7 @@ function buildCommentItem(c, playlistKey, isModal) {
 // ── Render daftar komentar ke container tertentu ──
 function renderCommentList(container, comments, playlistKey, isModal) {
   if (!comments || !comments.length) {
-    container.innerHTML = `<div class="comment-empty"><span></span>Belum ada komentar.<br>Jadilah yang pertama!</div>`;
+    container.innerHTML = `<div class="comment-empty"><span></span>No comments yet.<br>Be the first!</div>`;
     return;
   }
   container.innerHTML = '';
@@ -6266,7 +6228,7 @@ async function submitComment(playlistKey, textareaEl, sendBtn, photoDataRef) {
   const text = textareaEl.value.trim();
   const photoData = (typeof photoDataRef === 'function') ? photoDataRef() : photoDataRef;
   if (!text && !photoData) return;
-  if (!currentUser) { toast(' Login dulu'); return; }
+  if (!currentUser) { toast(' Please log in first'); return; }
   sendBtn.disabled = true;
   try {
     const profileSnap = await db.ref('users/' + currentUser.uid + '/profile').get().catch(() => null);
@@ -6280,29 +6242,29 @@ async function submitComment(playlistKey, textareaEl, sendBtn, photoDataRef) {
     textareaEl.style.height = 'auto';
     sendBtn.disabled = true;
     if (text) await sendCommentNotif(playlistKey, text);
-    toast(' Komentar terkirim!');
+    toast(' Comments terkirim!');
   } catch(e) {
-    toast(' Gagal kirim: ' + e.message);
+    toast(' Failed to send: ' + e.message);
     sendBtn.disabled = false;
   }
 }
 
-// ── Hapus komentar ──
+// ── Delete comment ──
 async function deleteComment(playlistKey, commentId, source) {
-  if (!confirm('Hapus komentar ini?')) return;
+  if (!confirm('Delete this comment?')) return;
   try {
     await db.ref('public_playlists/' + playlistKey + '/comments/' + commentId).remove();
-    toast(' Komentar dihapus');
-  } catch(e) { toast(' Gagal hapus: ' + e.message); }
+    toast(' Comments dihapus');
+  } catch(e) { toast(' Delete failed: ' + e.message); }
 }
 
-// ── Hapus balasan ──
+// ── Delete reply ──
 async function deleteReply(playlistKey, commentId, replyId) {
-  if (!confirm('Hapus balasan ini?')) return;
+  if (!confirm('Delete this reply?')) return;
   try {
     await db.ref('public_playlists/' + playlistKey + '/comments/' + commentId + '/replies/' + replyId).remove();
     toast(' Balasan dihapus');
-  } catch(e) { toast(' Gagal hapus: ' + e.message); }
+  } catch(e) { toast(' Delete failed: ' + e.message); }
 }
 
 // ── Setup comment input (auto-resize + enable send) ──
@@ -6338,7 +6300,7 @@ function showPvComments(playlistKey) {
   if (!section) return;
 
   section.style.display = 'block';
-  listEl.innerHTML = '<div class="comment-loading">Memuat komentar...</div>';
+  listEl.innerHTML = '<div class="comment-loading">Loading comments...</div>';
   textarea.value = '';
   sendBtn.disabled = true;
   removePvCommentPhoto();
@@ -6373,10 +6335,10 @@ function hidePvComments() {
   if (section) section.style.display = 'none';
 }
 
-// ── Modal komentar dari beranda ──
+// ── Comment modal from home ──
 function openCommentModal(e, playlistKey, playlistName) {
   e.stopPropagation();
-  if (!currentUser) { toast(' Login dulu untuk berkomentar'); return; }
+  if (!currentUser) { toast(' Please log in to comment'); return; }
 
   _currentCommentKey = playlistKey;
   const modal = document.getElementById('comment-modal');
@@ -6387,7 +6349,7 @@ function openCommentModal(e, playlistKey, playlistName) {
   const selfAvatar = document.getElementById('cm-modal-self-avatar');
 
   title.textContent = ' ' + playlistName;
-  listEl.innerHTML = '<div class="comment-loading">Memuat komentar...</div>';
+  listEl.innerHTML = '<div class="comment-loading">Loading comments...</div>';
   textarea.value = '';
   sendBtn.disabled = true;
   removeCmModalPhoto();
@@ -6427,14 +6389,14 @@ function closeCommentModal() {
   removeCmModalPhoto();
 }
 
-// ── Hook ke openPublicPlaylist ──
+// ── Hook to openPublicPlaylist ──
 const _origOpenPublicPlaylist = openPublicPlaylist;
 openPublicPlaylist = async function(pl) {
   await _origOpenPublicPlaylist(pl);
   showPvComments(pl.key);
 };
 
-// ── Hook ke backFromPlaylist ──
+// ── Hook to backFromPlaylist ──
 const _origBackFromPlaylist = backFromPlaylist;
 backFromPlaylist = function() {
   hidePvComments();
@@ -6505,7 +6467,7 @@ function setFinderFile(file) {
   document.getElementById('finder-result').classList.remove('show');
   document.getElementById('finder-no-result').classList.remove('show');
   document.getElementById('finder-ripple-wrap').classList.remove('show');
-  toast(' Video siap! Klik "Kenali Lagu" untuk memulai');
+  toast(' Video siap! Klik "Kenali Lagu" to get started');
 }
 
 function clearFinderFile(e) {
@@ -6640,7 +6602,7 @@ async function startFindSong() {
     const audioBlob = await extractAudioFromVideo(_finderFile);
 
     // Step 2: Send to AudD
-    setFinderStatus('Mengenali lagu...', 'Mencocokkan dengan database musik', '');
+    setFinderStatus('Identifying song...', 'Matching with music database', '');
     const fileName = audioBlob._filename || 'audio.webm';
     const formData = new FormData();
     formData.append('file', audioBlob, fileName);
@@ -6659,7 +6621,7 @@ async function startFindSong() {
       showFinderResult(song);
     } else {
       noResult.classList.add('show');
-      const errMsg = (data.error && data.error.error_message) ? data.error.error_message : 'Lagu tidak ditemukan';
+      const errMsg = (data.error && data.error.error_message) ? data.error.error_message : 'Song not found';
       toast('\u274c ' + errMsg);
       console.warn('AudD error detail:', JSON.stringify(data));
     }
@@ -6670,7 +6632,7 @@ async function startFindSong() {
       showFinderDemo();
     } else {
       noResult.classList.add('show');
-      toast(' Gagal: ' + err.message);
+      toast(' Failed: ' + err.message);
     }
   } finally {
     searchBtn.disabled = false;
@@ -6749,7 +6711,7 @@ function finderPlaySong() {
 function finderSaveToPlaylist() {
   if (!_finderResult) return;
   const query = (_finderResult.artist || '') + ' ' + (_finderResult.title || '');
-  toast(' Cari lagu di tab Cari Lagu untuk menambah ke playlist');
+  toast(' Search for songs in the Search tab to add to a playlist');
   finderPlaySong();
 }
 
@@ -6800,7 +6762,7 @@ function finderHistoryPlay(idx) {
 }
 
 function clearFinderHistory() {
-  if (!confirm('Hapus semua riwayat pencarian lagu?')) return;
+  if (!confirm('Clear all song search history?')) return;
   try { localStorage.removeItem(FINDER_HISTORY_KEY); } catch {}
   renderFinderHistory();
   toast(' Riwayat dihapus');
@@ -6809,11 +6771,11 @@ function clearFinderHistory() {
 function timeAgo(timestamp) {
   const diff = Date.now() - timestamp;
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'Baru saja';
+  if (mins < 1) return 'Just now';
   if (mins < 60) return mins + ' mnt lalu';
   const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return hrs + ' jam lalu';
-  return Math.floor(hrs / 24) + ' hari lalu';
+  if (hrs < 24) return hrs + ' hours ago';
+  return Math.floor(hrs / 24) + ' days ago';
 }
 </script>
 </body>

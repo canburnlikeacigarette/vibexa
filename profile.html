@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -579,7 +579,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
 <div id="auth-overlay">
   <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
     <img src="bird.gif" alt="Loading" style="width:160px;height:122px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(29,107,219,0.5));animation:birdFloat 2.4s ease-in-out infinite;">
-    <span style="font-size:.78rem;color:#3A4560;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;animation:birdPulse 1.6s ease-in-out infinite;">Memuat...</span>
+    <span style="font-size:.78rem;color:#3A4560;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;animation:birdPulse 1.6s ease-in-out infinite;">Loading...</span>
   </div>
 </div>
 <style>
@@ -595,7 +595,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
     </div>
     <span class="nav-logo-name">Vibexa</span>
   </a>
-  <button class="nav-search-btn" onclick="openSearchUsers()" title="Cari Pengguna">
+  <button class="nav-search-btn" onclick="openSearchUsers()" title="Search Users">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
   </button>
 </nav>
@@ -617,7 +617,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
       <div id="display-name">—</div>
       <div id="user-email">—</div>
     </div>
-    <div id="user-bio" style="color:var(--muted);font-style:italic">Belum ada deskripsi</div>
+    <div id="user-bio" style="color:var(--muted);font-style:italic">No description yet</div>
     <div class="profile-stats">
       <div class="stat-item">
         <div class="stat-num" id="stat-playlists">0</div>
@@ -625,37 +625,37 @@ textarea.form-input { resize: none; line-height: 1.6; }
       </div>
       <div class="stat-item">
         <div class="stat-num" id="stat-public">0</div>
-        <div class="stat-lbl">Publik</div>
+        <div class="stat-lbl">Public</div>
       </div>
       <div class="stat-item">
         <div class="stat-num" id="stat-likes">0</div>
-        <div class="stat-lbl">Total Like</div>
+        <div class="stat-lbl">Total Likes</div>
       </div>
     </div>
   </div>
 
   <!-- EDIT PROFILE FORM -->
   <div class="section-card">
-    <div class="section-title">Edit Profil</div>
+    <div class="section-title">Edit Profile</div>
     <div class="form-group">
-      <label class="form-label">Nama Tampilan</label>
-      <input type="text" class="form-input" id="inp-name" placeholder="Nama kamu..." maxlength="32">
+      <label class="form-label">Display Name</label>
+      <input type="text" class="form-input" id="inp-name" placeholder="Your name..." maxlength="32">
     </div>
     <div class="form-group">
-      <label class="form-label">Deskripsi / Bio</label>
-      <textarea class="form-input" id="inp-bio" rows="3" placeholder="Ceritakan sedikit tentang dirimu atau musik favoritmu..." maxlength="120"></textarea>
+      <label class="form-label">Description / Bio</label>
+      <textarea class="form-input" id="inp-bio" rows="3" placeholder="Tell us a little about yourself or your favorite music..." maxlength="120"></textarea>
       <div class="char-count"><span id="bio-count">0</span>/120</div>
     </div>
     <button class="btn-save" id="btn-save-profile" onclick="saveProfile()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
-      Simpan Perubahan
+      Save Changes
     </button>
   </div>
 
   <!-- PLAYLIST PUBLISH -->
   <div>
     <div class="playlists-header">
-      <div class="section-h2">Playlist Saya</div>
+      <div class="section-h2">My Playlists</div>
       <button class="explore-btn" onclick="openExplore()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
         Jelajahi
@@ -664,7 +664,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
     <div id="pl-publish-list">
       <div style="text-align:center;padding:30px 0;color:var(--muted);font-size:.82rem">
         <div style="font-size:2rem;margin-bottom:8px">🎵</div>
-        Belum ada playlist
+        No playlists yet
       </div>
     </div>
   </div>
@@ -677,14 +677,14 @@ textarea.form-input { resize: none; line-height: 1.6; }
     <button class="explore-back" onclick="closeExplore()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     </button>
-    <div class="explore-title">🌐 Playlist Komunitas</div>
+    <div class="explore-title">🌐 Community Playlists</div>
   </div>
   <div class="explore-inner">
-    <div class="explore-feed-title">Playlist Publik dari Semua Pengguna</div>
+    <div class="explore-feed-title">Public Playlists from All Users</div>
     <div id="explore-feed">
       <div style="text-align:center;padding:50px 0;color:var(--muted)">
         <div style="font-size:2.2rem;margin-bottom:10px">🌐</div>
-        <div style="font-size:.85rem">Memuat playlist komunitas...</div>
+        <div style="font-size:.85rem">Loading community playlists...</div>
       </div>
     </div>
   </div>
@@ -693,18 +693,18 @@ textarea.form-input { resize: none; line-height: 1.6; }
 <!-- PHOTO MODAL -->
 <div id="photo-modal" class="modal-bg" style="display:none" onclick="closePhotoModalBg(event)">
   <div class="modal-sheet">
-    <div class="sheet-title">Foto Profil</div>
-    <div class="sheet-sub">Upload foto profil baru kamu</div>
+    <div class="sheet-title">Profile Photo</div>
+    <div class="sheet-sub">Upload your new profile photo</div>
     <img class="preview-img" id="photo-preview" src="" alt="">
     <div class="drop-z" id="drop-zone" onclick="document.getElementById('photo-inp').click()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-      <span>Klik atau seret foto ke sini</span>
-      <small>JPG · PNG · WebP · Maks 2MB</small>
+      <span>Click or drag photo here</span>
+      <small>JPG · PNG · WebP · Max 2MB</small>
     </div>
     <input type="file" id="photo-inp" accept="image/*" style="display:none">
     <div class="sheet-btns">
-      <button class="btn-s" onclick="closePhotoModal()">Batal</button>
-      <button class="btn-p" id="btn-save-photo" onclick="savePhoto()" disabled>Simpan Foto</button>
+      <button class="btn-s" onclick="closePhotoModal()">Cancel</button>
+      <button class="btn-p" id="btn-save-photo" onclick="savePhoto()" disabled>Save Photo</button>
     </div>
   </div>
 </div>
@@ -739,7 +739,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
       </button>
       <div style="flex:1;position:relative;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted);pointer-events:none;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="search-user-inp" type="text" placeholder="Cari nama pengguna..."
+        <input id="search-user-inp" type="text" placeholder="Search username..."
           style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:50px;padding:10px 14px 10px 38px;color:var(--text);font-family:var(--f);font-size:.88rem;outline:none;transition:border-color .2s;"
           oninput="onSearchUserInput(this.value)"
           onfocus="this.style.borderColor='var(--blue)'"
@@ -750,7 +750,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
     <div id="search-user-results" style="flex:1;overflow-y:auto;padding:12px 16px;">
       <div style="text-align:center;padding:60px 0;color:var(--muted);">
         <div style="font-size:2.5rem;margin-bottom:12px;">🔍</div>
-        <div style="font-size:.84rem;">Ketik nama untuk mencari pengguna</div>
+        <div style="font-size:.84rem;">Type a name to search for users</div>
       </div>
     </div>
   </div>
@@ -763,7 +763,7 @@ textarea.form-input { resize: none; line-height: 1.6; }
     <button onclick="closeUserProfile()" style="width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--sub);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     </button>
-    <div id="upv-nav-name" style="font-size:1rem;font-weight:700;flex:1;">Profil Pengguna</div>
+    <div id="upv-nav-name" style="font-size:1rem;font-weight:700;flex:1;">User Profile</div>
   </div>
   <!-- Content -->
   <div style="max-width:700px;margin:0 auto;padding:0 16px 100px;">
@@ -783,15 +783,15 @@ textarea.form-input { resize: none; line-height: 1.6; }
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
           <div id="upv-stat-likes" style="font-size:1.2rem;font-weight:800;">0</div>
-          <div style="font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);">Total Like</div>
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);">Total Likes</div>
         </div>
       </div>
     </div>
     <!-- Public Playlists -->
     <div>
-      <div style="font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Playlist Publik</div>
+      <div style="font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Public Playlists</div>
       <div id="upv-playlists">
-        <div style="text-align:center;padding:40px 0;color:var(--muted);font-size:.83rem;">Memuat...</div>
+        <div style="text-align:center;padding:40px 0;color:var(--muted);font-size:.83rem;">Loading...</div>
       </div>
     </div>
   </div>
@@ -871,8 +871,8 @@ auth.onAuthStateChanged(async user => {
     document.getElementById('auth-overlay').innerHTML = `
       <div class="auth-box">
         <div style="font-size:2rem;margin-bottom:10px">🔒</div>
-        <h2>Login Diperlukan</h2>
-        <p>Kamu harus login untuk melihat profil.</p>
+        <h2>Login Required</h2>
+        <p>You need to log in to view your profile.</p>
         <div class="auth-btns">
           <a class="btn-login" href="index.html">Login</a>
         </div>
@@ -892,7 +892,7 @@ async function loadProfile() {
 
     document.getElementById('display-name').textContent = name;
     document.getElementById('user-email').textContent   = currentUser.email;
-    document.getElementById('user-bio').textContent     = bio || 'Belum ada deskripsi';
+    document.getElementById('user-bio').textContent     = bio || 'No description yet';
     document.getElementById('user-bio').style.fontStyle = bio ? 'normal' : 'italic';
     document.getElementById('user-bio').style.color     = bio ? 'var(--sub)' : 'var(--muted)';
 
@@ -937,7 +937,7 @@ function renderMyPlaylists() {
   const container = document.getElementById('pl-publish-list');
   const ids = Object.keys(myPlaylists);
   if (!ids.length) {
-    container.innerHTML = `<div style="text-align:center;padding:30px 0;color:var(--muted);font-size:.82rem"><div style="font-size:2rem;margin-bottom:8px">🎵</div>Belum ada playlist</div>`;
+    container.innerHTML = `<div style="text-align:center;padding:30px 0;color:var(--muted);font-size:.82rem"><div style="font-size:2rem;margin-bottom:8px">🎵</div>No playlists yet</div>`;
     return;
   }
   container.innerHTML = ids.map(id => {
@@ -951,8 +951,8 @@ function renderMyPlaylists() {
     <div class="pl-pub-row">
       <div class="pl-pub-cover">${coverHTML}</div>
       <div class="pl-pub-info">
-        <div class="pl-pub-name">${esc(pl.name || 'Playlist')} <span class="pub-badge ${isPublic?'public':'private'}">${isPublic?'Publik':'Privat'}</span></div>
-        <div class="pl-pub-meta">${trackCount} lagu${isPublic ? ' · Bisa dilihat semua orang' : ''}</div>
+        <div class="pl-pub-name">${esc(pl.name || 'Playlist')} <span class="pub-badge ${isPublic?'public':'private'}">${isPublic?'Public':'Private'}</span></div>
+        <div class="pl-pub-meta">${trackCount} songs${isPublic ? ' · Bisa dilihat semua orang' : ''}</div>
       </div>
       <div class="toggle-wrap">
         <span class="toggle-lbl">${isPublic?'ON':'OFF'}</span>
@@ -971,7 +971,7 @@ async function updateStats() {
   document.getElementById('stat-playlists').textContent = ids.length;
   document.getElementById('stat-public').textContent    = publicCount;
 
-  // Count total likes across all published playlists
+  // Count total likess across all published playlists
   let totalLikes = 0;
   for (const id of ids) {
     if (myPlaylists[id].public) {
@@ -1017,21 +1017,21 @@ async function togglePublish(plId, makePublic, inputEl) {
       await db.ref('music_playlists_v2/' + currentUser.uid + '/' + plId + '/public').set(true);
       myPlaylists[plId].public = true;
       lbl.textContent = 'ON';
-      badge.textContent = 'Publik';
+      badge.textContent = 'Public';
       badge.className = 'pub-badge public';
-      toast('✅ Playlist dipublikasikan!');
+      toast('✅ Playlist published!');
     } else {
       await db.ref('public_playlists/' + currentUser.uid + '_' + plId).remove();
       await db.ref('music_playlists_v2/' + currentUser.uid + '/' + plId + '/public').set(false);
       myPlaylists[plId].public = false;
       lbl.textContent = 'OFF';
-      badge.textContent = 'Privat';
+      badge.textContent = 'Private';
       badge.className = 'pub-badge private';
-      toast('🔒 Playlist dibuat privat');
+      toast('🔒 Playlist set to private');
     }
     updateStats();
   } catch(e) {
-    toast('❌ Gagal: ' + e.message);
+    toast('❌ Failed: ' + e.message);
     inputEl.checked = !makePublic; // revert
   }
 }
@@ -1042,14 +1042,14 @@ async function saveProfile() {
   const btn  = document.getElementById('btn-save-profile');
   const name = document.getElementById('inp-name').value.trim();
   const bio  = document.getElementById('inp-bio').value.trim();
-  if (!name) { toast('❗ Nama tidak boleh kosong'); return; }
+  if (!name) { toast('❗ Name cannot be empty'); return; }
   btn.disabled = true;
-  btn.textContent = 'Menyimpan...';
+  btn.textContent = 'Saving...';
   try {
     await db.ref('users/' + currentUser.uid + '/profile').update({ displayName: name, bio });
     await currentUser.updateProfile({ displayName: name });
     document.getElementById('display-name').textContent = name;
-    document.getElementById('user-bio').textContent = bio || 'Belum ada deskripsi';
+    document.getElementById('user-bio').textContent = bio || 'No description yet';
     document.getElementById('user-bio').style.fontStyle = bio ? 'normal' : 'italic';
     document.getElementById('user-bio').style.color = bio ? 'var(--sub)' : 'var(--muted)';
     // Also update owner name in all public playlists
@@ -1057,12 +1057,12 @@ async function saveProfile() {
     for (const id of ids) {
       db.ref('public_playlists/' + currentUser.uid + '_' + id + '/ownerName').set(name);
     }
-    toast('✅ Profil berhasil disimpan!');
+    toast('✅ Profile saved!');
   } catch(e) {
-    toast('❌ Gagal: ' + e.message);
+    toast('❌ Failed: ' + e.message);
   } finally {
     btn.disabled = false;
-    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Simpan Perubahan`;
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Save Changes`;
   }
 }
 
@@ -1080,7 +1080,7 @@ function closePhotoModalBg(e) { if (e.target === document.getElementById('photo-
 document.getElementById('photo-inp').addEventListener('change', function() {
   const file = this.files[0];
   if (!file) return;
-  if (file.size > 2 * 1024 * 1024) { toast('❗ Foto terlalu besar (maks 2MB)'); return; }
+  if (file.size > 2 * 1024 * 1024) { toast('❗ Photo too large (max 2MB)'); return; }
   const reader = new FileReader();
   reader.onload = e => {
     pendingPhotoData = e.target.result;
@@ -1108,7 +1108,7 @@ dz.addEventListener('drop', e => {
 async function savePhoto() {
   if (!pendingPhotoData || !currentUser) return;
   const btn = document.getElementById('btn-save-photo');
-  btn.disabled = true; btn.textContent = 'Menyimpan...';
+  btn.disabled = true; btn.textContent = 'Saving...';
   try {
     // Store as base64 in DB (small sized)
     const compressed = await compressImage(pendingPhotoData, 200, 200, 0.7);
@@ -1120,11 +1120,11 @@ async function savePhoto() {
     }
     setAvatar(compressed, document.getElementById('display-name').textContent);
     closePhotoModal();
-    toast('✅ Foto profil diperbarui!');
+    toast('✅ Profile photo updated!');
   } catch(e) {
-    toast('❌ Gagal: ' + e.message);
+    toast('❌ Failed: ' + e.message);
   } finally {
-    btn.disabled = false; btn.textContent = 'Simpan Foto';
+    btn.disabled = false; btn.textContent = 'Save Photo';
   }
 }
 
@@ -1165,14 +1165,14 @@ async function loadExploreFeed() {
   try {
     const snap = await db.ref('public_playlists').get();
     if (!snap.exists()) {
-      feed.innerHTML = `<div style="text-align:center;padding:50px 0;color:var(--muted)"><div style="font-size:2rem;margin-bottom:8px">🌐</div><div style="font-size:.83rem">Belum ada playlist publik</div></div>`;
+      feed.innerHTML = `<div style="text-align:center;padding:50px 0;color:var(--muted)"><div style="font-size:2rem;margin-bottom:8px">🌐</div><div style="font-size:.83rem">No playlists yet publik</div></div>`;
       return;
     }
     const all = snap.val();
     const keys = Object.keys(all).sort((a, b) => (all[b].publishedAt || 0) - (all[a].publishedAt || 0));
     feed.innerHTML = keys.map(key => buildCPCard(key, all[key])).join('');
   } catch(e) {
-    feed.innerHTML = `<div style="text-align:center;padding:50px 0;color:var(--muted)">Gagal memuat</div>`;
+    feed.innerHTML = `<div style="text-align:center;padding:50px 0;color:var(--muted)">Failed to load</div>`;
   }
 }
 
@@ -1198,14 +1198,14 @@ function buildCPCard(key, pl) {
       </div>
     </div>`).join('');
 
-  const moreHTML = trackCount > 3 ? `<div class="cpc-more">+${trackCount - 3} lagu lagi</div>` : '';
+  const moreHTML = trackCount > 3 ? `<div class="cpc-more">+${trackCount - 3} songs lagi</div>` : '';
 
   return `
   <div class="cpcard" id="card-${key}">
     <div class="cpc-header">
       <div class="cpc-user-av"><div class="cpc-user-av-inner">${userAv}</div></div>
       <div class="cpc-user-info">
-        <div class="cpc-username">${esc(pl.ownerName || 'Pengguna')}${isOwn ? ' <span style="color:var(--blue);font-size:.65rem">(Kamu)</span>' : ''}</div>
+        <div class="cpc-username">${esc(pl.ownerName || 'User')}${isOwn ? ' <span style="color:var(--blue);font-size:.65rem">(Kamu)</span>' : ''}</div>
         <div class="cpc-time">${timeAgo}</div>
       </div>
     </div>
@@ -1214,7 +1214,7 @@ function buildCPCard(key, pl) {
         <div class="cpc-cover">${coverHTML}</div>
         <div class="cpc-pl-info">
           <div class="cpc-pl-name">${esc(pl.name || 'Playlist')}</div>
-          <div class="cpc-pl-sub">${trackCount} lagu</div>
+          <div class="cpc-pl-sub">${trackCount} songs</div>
         </div>
         <button class="cpc-play-btn" onclick="playPublicPlaylist('${key}')">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1236,10 +1236,10 @@ function buildCPCard(key, pl) {
     </div>
     <div class="cpc-comments" id="comments-${key}">
       <div class="comment-list" id="comment-list-${key}">
-        <div class="comment-empty">Memuat komentar...</div>
+        <div class="comment-empty">Loading comments...</div>
       </div>
       <div class="comment-input-row">
-        <input type="text" class="cm-input" id="cm-inp-${key}" placeholder="Tulis komentar..." maxlength="200"
+        <input type="text" class="cm-input" id="cm-inp-${key}" placeholder="Write a comment..." maxlength="200"
           onkeydown="if(event.key==='Enter') submitComment('${key}')">
         <button class="cm-send" onclick="submitComment('${key}')">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
@@ -1272,7 +1272,7 @@ async function initLikesForCard(key) {
 }
 
 async function toggleLike(key) {
-  if (!currentUser) { toast('Login dulu untuk like'); return; }
+  if (!currentUser) { toast('Please log in to like'); return; }
   const btn = document.getElementById('like-btn-' + key);
   const countEl = document.getElementById('like-count-' + key);
   const liked = !likeState[key];
@@ -1291,7 +1291,7 @@ async function toggleLike(key) {
     const likes = snap.exists() ? snap.val() : {};
     const count = typeof likes === 'object' ? Object.keys(likes).length : 0;
     if (countEl) countEl.textContent = count;
-  } catch(e) { toast('Gagal: ' + e.message); }
+  } catch(e) { toast('Failed: ' + e.message); }
 }
 
 // ── Comments ──────────────────────────────────────────────
@@ -1311,7 +1311,7 @@ async function loadComments(key) {
   try {
     const snap = await db.ref('public_playlists/' + key + '/comments').get();
     if (!snap.exists()) {
-      listEl.innerHTML = '<div class="comment-empty">Belum ada komentar. Jadilah yang pertama!</div>';
+      listEl.innerHTML = '<div class="comment-empty">No comments yet. Be the first!</div>';
       if (countEl) countEl.textContent = '0';
       return;
     }
@@ -1324,19 +1324,19 @@ async function loadComments(key) {
       <div class="comment-item">
         <div class="cm-av"><div class="cm-av-inner">${av}</div></div>
         <div class="cm-body">
-          <div class="cm-name">${esc(c.name || 'Pengguna')}</div>
+          <div class="cm-name">${esc(c.name || 'User')}</div>
           <div class="cm-text">${esc(c.text || '')}</div>
           <div class="cm-time">${timeSince(c.t)}</div>
         </div>
       </div>`;
     }).join('');
   } catch(e) {
-    listEl.innerHTML = '<div class="comment-empty">Gagal memuat komentar</div>';
+    listEl.innerHTML = '<div class="comment-empty">Failed to load komentar</div>';
   }
 }
 
 async function submitComment(key) {
-  if (!currentUser) { toast('Login dulu untuk berkomentar'); return; }
+  if (!currentUser) { toast('Please log in to comment'); return; }
   const inp = document.getElementById('cm-inp-' + key);
   const text = inp.value.trim();
   if (!text) return;
@@ -1358,7 +1358,7 @@ async function submitComment(key) {
     loadComments(key);
     commentsLoaded[key] = true;
   } catch(e) {
-    toast('Gagal kirim komentar: ' + e.message);
+    toast('Failed to send comment: ' + e.message);
   }
 }
 
@@ -1366,7 +1366,7 @@ async function submitComment(key) {
 function playPublicTrack(jsonStr) {
   try {
     const track = JSON.parse(jsonStr);
-    if (!track._query) { toast('Info lagu tidak tersedia'); return; }
+    if (!track._query) { toast('Info songs tidak tersedia'); return; }
     // Open music player with the track via URL param
     window.open('vibexa.html?play=' + encodeURIComponent(track._query), '_blank');
   } catch(e) {}
@@ -1374,7 +1374,7 @@ function playPublicTrack(jsonStr) {
 
 function playPublicPlaylist(key) {
   // Just navigate to music player; user can manually search
-  toast('🎵 Buka Vibexa Music untuk memutar playlist ini');
+  toast('🎵 Open Vibexa Music to play this playlist');
 }
 
 // ── SEARCH USERS ──────────────────────────────────────────
@@ -1392,7 +1392,7 @@ function closeSearchUsers() {
   document.getElementById('search-user-results').innerHTML = `
     <div style="text-align:center;padding:60px 0;color:var(--muted);">
       <div style="font-size:2.5rem;margin-bottom:12px;">🔍</div>
-      <div style="font-size:.84rem;">Ketik nama untuk mencari pengguna</div>
+      <div style="font-size:.84rem;">Type a name to search for users</div>
     </div>`;
 }
 
@@ -1409,7 +1409,7 @@ async function preloadPublicUsers() {
         if (!map[uid]) {
           map[uid] = {
             uid,
-            displayName: pl.ownerName || 'Pengguna',
+            displayName: pl.ownerName || 'User',
             photoURL: pl.ownerPhoto || '',
             plCount: 0,
             likesTotal: 0
@@ -1432,7 +1432,7 @@ function onSearchUserInput(val) {
     document.getElementById('search-user-results').innerHTML = `
       <div style="text-align:center;padding:60px 0;color:var(--muted);">
         <div style="font-size:2.5rem;margin-bottom:12px;">🔍</div>
-        <div style="font-size:.84rem;">Ketik nama untuk mencari pengguna</div>
+        <div style="font-size:.84rem;">Type a name to search for users</div>
       </div>`;
     return;
   }
@@ -1464,7 +1464,7 @@ async function doSearchUsers(q) {
       <div class="su-av"><div class="su-av-inner">${avHTML}</div></div>
       <div class="su-info">
         <div class="su-name">${esc(u.displayName)}${isMe ? ' <span style="color:var(--blue);font-size:.65rem">(Kamu)</span>' : ''}</div>
-        <div class="su-meta">${u.plCount} playlist publik · ${u.likesTotal} total like</div>
+        <div class="su-meta">${u.plCount} public playlists · ${u.likesTotal} total likes</div>
       </div>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--muted);flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
     </div>`;
@@ -1479,13 +1479,13 @@ async function openUserProfile(uid) {
   currentViewedUid = uid;
   currentViewedPlaylists = {};
   document.getElementById('user-profile-view').style.display = 'block';
-  document.getElementById('upv-nav-name').textContent = 'Profil Pengguna';
+  document.getElementById('upv-nav-name').textContent = 'User Profile';
   document.getElementById('upv-avatar').textContent = '...';
   document.getElementById('upv-name').textContent = '...';
   document.getElementById('upv-bio').textContent = '';
   document.getElementById('upv-stat-pl').textContent = '0';
   document.getElementById('upv-stat-likes').textContent = '0';
-  document.getElementById('upv-playlists').innerHTML = `<div style="text-align:center;padding:40px 0;color:var(--muted);font-size:.83rem;">Memuat...</div>`;
+  document.getElementById('upv-playlists').innerHTML = `<div style="text-align:center;padding:40px 0;color:var(--muted);font-size:.83rem;">Loading...</div>`;
 
   // ── 1. Ambil semua public_playlists dulu (dapat ownerName & ownerPhoto dari sini) ──
   let userPls = {};
@@ -1511,7 +1511,7 @@ async function openUserProfile(uid) {
   }
 
   // ── 2. Coba ambil profil lengkap dari users/{uid}/profile ──
-  let name = nameFromPl || 'Pengguna';
+  let name = nameFromPl || 'User';
   let photo = photoFromPl || '';
   let bio = '';
 
@@ -1531,7 +1531,7 @@ async function openUserProfile(uid) {
   // ── 3. Render header profil ──
   document.getElementById('upv-nav-name').textContent = name;
   document.getElementById('upv-name').textContent = name;
-  document.getElementById('upv-bio').textContent = bio || 'Belum ada deskripsi';
+  document.getElementById('upv-bio').textContent = bio || 'No description yet';
   document.getElementById('upv-bio').style.fontStyle = bio ? 'normal' : 'italic';
 
   const avEl = document.getElementById('upv-avatar');
@@ -1544,7 +1544,7 @@ async function openUserProfile(uid) {
   // ── 4. Render playlist ──
   const keys = Object.keys(userPls);
   if (!keys.length) {
-    document.getElementById('upv-playlists').innerHTML = `<div style="text-align:center;padding:40px 0;color:var(--muted);"><div style="font-size:2rem;margin-bottom:8px">🎵</div><div style="font-size:.83rem;">Belum ada playlist publik</div></div>`;
+    document.getElementById('upv-playlists').innerHTML = `<div style="text-align:center;padding:40px 0;color:var(--muted);"><div style="font-size:2rem;margin-bottom:8px">🎵</div><div style="font-size:.83rem;">No playlists yet publik</div></div>`;
     document.getElementById('upv-stat-pl').textContent = '0';
     document.getElementById('upv-stat-likes').textContent = '0';
     return;
@@ -1573,7 +1573,7 @@ async function openUserProfile(uid) {
       <div class="upv-pl-cover">${coverHTML}</div>
       <div class="upv-pl-info">
         <div class="upv-pl-name">${esc(pl.name || 'Playlist')}</div>
-        <div class="upv-pl-meta">${tracks.length} lagu · ${likes} suka</div>
+        <div class="upv-pl-meta">${tracks.length} songs · ${likes} likes</div>
       </div>
       <button class="upv-pl-play" onclick="event.stopPropagation();openPlDetail('${key}')">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1603,7 +1603,7 @@ function openPlDetail(key) {
   document.getElementById('pl-detail-view').style.display = 'block';
   document.getElementById('pld-nav-name').textContent = pl.name || 'Playlist';
   document.getElementById('pld-name').textContent = pl.name || 'Playlist';
-  document.getElementById('pld-owner').textContent = 'oleh ' + (pl.ownerName || 'Pengguna');
+  document.getElementById('pld-owner').textContent = 'by ' + (pl.ownerName || 'User');
 
   const coverEl = document.getElementById('pld-cover');
   const coverHTML = pl.coverThumb
@@ -1624,7 +1624,7 @@ function closePlDetail() {
 function renderDetailTracks() {
   const container = document.getElementById('pld-tracks');
   if (!currentDetailTracks.length) {
-    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);font-size:.83rem;">Tidak ada lagu</div>`;
+    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);font-size:.83rem;">Tidak ada songs</div>`;
     return;
   }
   container.innerHTML = currentDetailTracks.map((t, i) => `
@@ -1643,7 +1643,7 @@ function renderDetailTracks() {
 
 function playDetailTrack(idx) {
   const t = currentDetailTracks[idx];
-  if (!t || !t._query) { toast('ℹ️ Info lagu tidak tersedia'); return; }
+  if (!t || !t._query) { toast('ℹ️ Info songs tidak tersedia'); return; }
   currentPlayingIdx = idx;
   renderDetailTracks();
   // Open music player with track
@@ -1651,9 +1651,9 @@ function playDetailTrack(idx) {
 }
 
 function playAllFromDetail() {
-  if (!currentDetailTracks.length) { toast('Playlist kosong'); return; }
+  if (!currentDetailTracks.length) { toast('Playlist is empty'); return; }
   const first = currentDetailTracks[0];
-  if (!first || !first._query) { toast('ℹ️ Info lagu tidak tersedia'); return; }
+  if (!first || !first._query) { toast('ℹ️ Info songs tidak tersedia'); return; }
   currentPlayingIdx = 0;
   renderDetailTracks();
   window.open('vibexa.html?play=' + encodeURIComponent(first._query), '_blank');
@@ -1686,10 +1686,10 @@ function esc(s) {
 function timeSince(ts) {
   if (!ts) return '';
   const sec = Math.floor((Date.now() - ts) / 1000);
-  if (sec < 60) return 'baru saja';
-  if (sec < 3600) return Math.floor(sec / 60) + ' menit lalu';
-  if (sec < 86400) return Math.floor(sec / 3600) + ' jam lalu';
-  return Math.floor(sec / 86400) + ' hari lalu';
+  if (sec < 60) return 'just now';
+  if (sec < 3600) return Math.floor(sec / 60) + ' minutes ago';
+  if (sec < 86400) return Math.floor(sec / 3600) + ' hours ago';
+  return Math.floor(sec / 86400) + ' days ago';
 }
 let toastTimer;
 function toast(msg) {

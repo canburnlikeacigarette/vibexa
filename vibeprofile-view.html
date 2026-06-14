@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -330,15 +330,15 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
   <!-- Loading state -->
   <div id="loading">
     <div class="loader-ring"></div>
-    <p>Memuat halaman...</p>
+    <p>Loading page...</p>
   </div>
 
   <!-- Not found state -->
   <div id="not-found">
     <div class="nf-emoji">😶</div>
     <h2>Halaman tidak ditemukan</h2>
-    <p>Link yang kamu buka mungkin sudah tidak aktif atau belum dipublikasikan oleh pemiliknya.</p>
-    <a href="vibexa.html" style="margin-top:8px;padding:10px 22px;background:var(--green);color:#000;border-radius:50px;font-weight:700;font-size:.82rem;text-decoration:none">Kembali ke Vibexa</a>
+    <p>The link you opened may no longer be active or has not been published by its owner.</p>
+    <a href="vibexa.html" style="margin-top:8px;padding:10px 22px;background:var(--green);color:#000;border-radius:50px;font-weight:700;font-size:.82rem;text-decoration:none">Back to Vibexa</a>
   </div>
 
   <!-- Actual page content -->
@@ -380,7 +380,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0M21 16a3 3 0 11-6 0"/></svg>
     </div>
     <div class="cta-text">
-      <div class="cta-headline">Buat <span>VibeProfile</span>-mu sendiri!</div>
+      <div class="cta-headline">Create your own <span>VibeProfile</span>!</div>
       <div class="cta-sub">Halaman musik personalmu. Gratis & langsung bisa dibagikan.</div>
     </div>
     <div class="cta-actions">
@@ -388,7 +388,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
         Buat Sekarang
       </a>
-      <button class="cta-btn-close" onclick="dismissCTA()" title="Tutup">
+      <button class="cta-btn-close" onclick="dismissCTA()" title="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
     </div>
@@ -412,8 +412,8 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
   if (isLoggedIn) {
     ctaBtn.href = 'vibeprofile.html';
     ctaBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit VibeProfile-ku';
-    document.querySelector('.cta-headline').innerHTML = 'Edit <span>VibeProfile</span>-mu';
-    document.querySelector('.cta-sub').textContent = 'Kamu sudah punya VibeProfile. Klik untuk mengeditnya.';
+    document.querySelector('.cta-headline').innerHTML = 'Edit your <span>VibeProfile</span>';
+    document.querySelector('.cta-sub').textContent = 'You already have a VibeProfile. Click to edit it.';
   }
 })();
 
@@ -501,11 +501,11 @@ function renderSnapshot(snapshot, sid) {
       div.className = 'widget';
 
       // Gunakan posisi pixel PERSIS seperti disimpan saat publish dari PC
-      // Jika ada data pct, konversi kembali ke pixel dalam REF_W=700 space
+      // If pct data exists, convert back to pixels in REF_W=700 space
       let left, top, width, height, rotation = 0;
 
       if (elData.px) {
-        // ✅ Format terbaru: koordinat sudah dinormalisasi ke ruang 700px
+        // ✅ Latest format: coordinates already normalized to 700px space
         left   = elData.px.left;
         top    = elData.px.top;
         width  = elData.px.width;
@@ -601,7 +601,7 @@ function renderSnapshot(snapshot, sid) {
   }
 }
 
-// Re-apply scale saat layar dirotasi atau resize
+// Re-apply scale when screen is rotated or resized
 window.addEventListener('resize', applyZoneScale);
 
 function applyBg(bg) {
@@ -707,17 +707,17 @@ function _buildAskForm(themeKey) {
       </div>
       <div class="ask-widget-body" style="background:${t.bodyBg};">
         <div class="ask-input-wrap">
-          <textarea class="ask-textarea" placeholder="Tulis pesan atau pertanyaanmu..." maxlength="300" oninput="askOnInput(this)" style="border-color:${t.inputBorder};color:${t.inputColor};--ask-ph:${t.placeholder};"></textarea>
+          <textarea class="ask-textarea" placeholder="Write your message or question..." maxlength="300" oninput="askOnInput(this)" style="border-color:${t.inputBorder};color:${t.inputColor};--ask-ph:${t.placeholder};"></textarea>
           <span class="ask-char-count" style="color:${t.charColor};">0/300</span>
         </div>
         <div class="ask-footer">
           <button class="ask-send-btn" onclick="askSend(this)" disabled style="background:${t.btnBg};color:${t.btnColor};">
-            Kirim
+            Send
           </button>
         </div>
         <div class="ask-success" style="display:none;flex-direction:column;align-items:center;gap:8px;padding:16px;text-align:center;">
-          <div style="font-size:.82rem;font-weight:700;color:${t.successMsg};">Pesan terkirim!</div>
-          <button class="ask-send-another" onclick="askSendAnother(this)" style="border-color:${t.anotherBorder};color:${t.anotherColor};">Kirim lagi</button>
+          <div style="font-size:.82rem;font-weight:700;color:${t.successMsg};">Message sent!</div>
+          <button class="ask-send-another" onclick="askSendAnother(this)" style="border-color:${t.anotherBorder};color:${t.anotherColor};">Send another</button>
         </div>
       </div>
     </div>
@@ -800,7 +800,7 @@ async function askSend(btn) {
     const msgId = 'msg' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     const ts = Date.now();
 
-    // Simpan pesan ke vibeprofiles/{sid}/messages/{msgId}
+    // Save message to vibeprofiles/{sid}/messages/{msgId}
     await fn.set(fn.ref(db, `vibeprofiles/${sid}/messages/${msgId}`), {
       text: msg,
       ts,
@@ -816,8 +816,8 @@ async function askSend(btn) {
   } catch(e) {
     console.error('Ask send error:', e);
     btn.disabled = false;
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Kirim';
-    alert('Gagal mengirim pesan. Coba lagi.');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send';
+    alert('Failed to send message. Please try again.');
   }
 }
 
@@ -992,7 +992,7 @@ function _nextTrack() {
   if (_queueIdx < _queue.length - 1) _playIdx(_queueIdx + 1);
 }
 
-// ✅ Fungsi yang dipanggil oleh tombol play di playbar widget
+// ✅ Function called by the play button in the playbar widget
 function playAllFromTop() {
   const cards = document.querySelectorAll('#free-zone .music-card');
   _queue = [];
@@ -1004,7 +1004,7 @@ function playAllFromTop() {
       preview: null
     });
   });
-  if (!_queue.length) { _showToast('⚠ Belum ada lagu'); return; }
+  if (!_queue.length) { _showToast('⚠ No songs yet'); return; }
   _playIdx(0);
 }
 
@@ -1019,7 +1019,7 @@ function onMusicCardClick(wid) {
     art: card.querySelector('img')?.src || '',
     preview: null
   };
-  // Cek apakah lagu ini sudah ada di queue
+  // Check if this song is already in the queue
   const existing = _queue.findIndex(q => q.title === track.title && q.artist === track.artist);
   if (existing >= 0 && existing === _queueIdx && _isPlaying) {
     // Pause jika lagi diputar

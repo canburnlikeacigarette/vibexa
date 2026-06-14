@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vibexa — Daftar Akun</title>
+<title>Vibexa — Create Account</title>
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#156dee">
@@ -388,19 +388,19 @@ label {
     </div>
 
     <div class="heading">
-      <h1>Buat akun gratis</h1>
-      <p>Daftar dan nikmati semua fitur musik tanpa batas.</p>
+      <h1>Create a free account</h1>
+      <p>Sign up and enjoy all music features without limits.</p>
     </div>
 
     <div class="perks">
       <div class="perk"><div class="perk-dot"></div><span>Simpan playlist & lagu favoritmu</span></div>
-      <div class="perk"><div class="perk-dot"></div><span>Sinkronisasi otomatis di semua perangkat</span></div>
+      <div class="perk"><div class="perk-dot"></div><span>Auto-sync across all your devices</span></div>
       <div class="perk"><div class="perk-dot"></div><span>Lirik real-time & mode fullscreen</span></div>
     </div>
 
     <div id="errorMsg" class="error-msg">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-      <span id="errorText">Terjadi kesalahan.</span>
+      <span id="errorText">An error occurred.</span>
     </div>
     <div id="successMsg" class="success-msg">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg>
@@ -408,10 +408,10 @@ label {
     </div>
 
     <div class="form-group">
-      <label>Nama Lengkap</label>
+      <label>Full Name</label>
       <div class="input-wrap">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <input type="text" id="displayName" placeholder="Nama kamu" autocomplete="name" oninput="validateName()">
+        <input type="text" id="displayName" placeholder="Your name" autocomplete="name" oninput="validateName()">
       </div>
       <div class="field-hint" id="hintName"></div>
     </div>
@@ -426,10 +426,10 @@ label {
     </div>
 
     <div class="form-group">
-      <label>Kata Sandi</label>
+      <label>Password</label>
       <div class="input-wrap">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <input type="password" id="password" placeholder="Min. 8 karakter" autocomplete="new-password" oninput="updateStrength()">
+        <input type="password" id="password" placeholder="Min. 8 characters" autocomplete="new-password" oninput="updateStrength()">
         <button type="button" class="pw-toggle" onclick="togglePw('password','eyeIcon1')">
           <svg id="eyeIcon1" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </button>
@@ -446,10 +446,10 @@ label {
     </div>
 
     <div class="form-group">
-      <label>Konfirmasi Kata Sandi</label>
+      <label>Konfirmasi Password</label>
       <div class="input-wrap">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <input type="password" id="confirm" placeholder="Ulangi kata sandi" autocomplete="new-password" oninput="validateConfirm()">
+        <input type="password" id="confirm" placeholder="Repeat password" autocomplete="new-password" oninput="validateConfirm()">
         <button type="button" class="pw-toggle" onclick="togglePw('confirm','eyeIcon2')">
           <svg id="eyeIcon2" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </button>
@@ -463,11 +463,11 @@ label {
     </div>
 
     <button class="btn-submit" id="btnRegister" onclick="doRegister()">
-      <span class="btn-text">Buat Akun</span>
+      <span class="btn-text">Create Account</span>
       <div class="spinner"></div>
     </button>
 
-    <div class="divider"><span>atau</span></div>
+    <div class="divider"><span>or</span></div>
 
     <button class="btn-google" onclick="doGoogleRegister()">
       <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/></svg>
@@ -475,7 +475,7 @@ label {
     </button>
 
     <div class="footer-link">
-      Sudah punya akun? <a href="login.html">Masuk di sini</a>
+      Already have an account? <a href="login.html">Sign in here</a>
     </div>
   </div>
 </div>
@@ -484,8 +484,8 @@ label {
 <script type="module">
   // ══════════════════════════════════════════════════════════
   // 🔥 FIREBASE CONFIGURATION
-  // Ganti dengan konfigurasi Firebase proyekmu sendiri
-  // Buka: console.firebase.google.com → Proyek → Pengaturan
+  // Replace with your own Firebase project configuration
+  // Go to: console.firebase.google.com → Project → Settings
   // ══════════════════════════════════════════════════════════
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
   import {
@@ -518,7 +518,7 @@ label {
   const db = getDatabase(app);
   const provider = new GoogleAuthProvider();
 
-  // Redirect jika sudah login
+  // Redirect if already signed in
   onAuthStateChanged(auth, (user) => {
     if (user) {
       window.location.href = 'vibexa.html';
@@ -568,7 +568,7 @@ function validateName() {
   const inp = document.getElementById('displayName');
   if (val.length === 0) { inp.className = ''; clearHint('hintName'); return false; }
   if (val.length < 2) {
-    inp.className = 'invalid'; setHint('hintName', 'Nama minimal 2 karakter', 'err'); return false;
+    inp.className = 'invalid'; setHint('hintName', 'Name must be at least 2 characters', 'err'); return false;
   }
   inp.className = 'valid'; clearHint('hintName'); return true;
 }
@@ -579,7 +579,7 @@ function validateEmail() {
   if (val.length === 0) { inp.className = ''; clearHint('hintEmail'); return false; }
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!re.test(val)) {
-    inp.className = 'invalid'; setHint('hintEmail', 'Format email tidak valid', 'err'); return false;
+    inp.className = 'invalid'; setHint('hintEmail', 'Invalid email format', 'err'); return false;
   }
   inp.className = 'valid'; clearHint('hintEmail'); return true;
 }
@@ -603,12 +603,12 @@ function updateStrength() {
   const score = getPasswordStrength(pw);
   const bars = ['sb1','sb2','sb3','sb4'];
   const colors = ['#ff5555','#ffb347','#3D9DD6','#3dda6e'];
-  const labels = ['','Lemah','Sedang','Kuat','Sangat Kuat'];
+  const labels = ['','Weak','Fair','Strong','Very Strong'];
   bars.forEach((id, i) => {
     document.getElementById(id).style.background = i < score ? colors[score - 1] : 'var(--muted)';
   });
   const label = document.getElementById('strengthLabel');
-  label.textContent = labels[score] || 'Sangat Lemah';
+  label.textContent = labels[score] || 'Very Weak';
   label.style.color = score > 0 ? colors[score - 1] : 'var(--muted)';
   validateConfirm();
 }
@@ -619,9 +619,9 @@ function validateConfirm() {
   const inp = document.getElementById('confirm');
   if (cf.length === 0) { inp.className = ''; clearHint('hintConfirm'); return false; }
   if (pw !== cf) {
-    inp.className = 'invalid'; setHint('hintConfirm', 'Kata sandi tidak cocok', 'err'); return false;
+    inp.className = 'invalid'; setHint('hintConfirm', 'Passwords do not match', 'err'); return false;
   }
-  inp.className = 'valid'; setHint('hintConfirm', 'Kata sandi cocok ✓', 'ok'); return true;
+  inp.className = 'valid'; setHint('hintConfirm', 'Passwords match ✓', 'ok'); return true;
 }
 
 function togglePw(inputId, iconId) {
@@ -658,15 +658,15 @@ function setLoading(btn, loading) {
 
 function handleAuthError(code) {
   const errors = {
-    'auth/email-already-in-use': 'Email ini sudah digunakan. Coba masuk atau gunakan email lain.',
-    'auth/invalid-email': 'Format email tidak valid.',
-    'auth/weak-password': 'Kata sandi terlalu lemah. Gunakan minimal 6 karakter.',
-    'auth/network-request-failed': 'Gagal terhubung. Periksa koneksi internetmu.',
-    'auth/too-many-requests': 'Terlalu banyak percobaan. Coba lagi nanti.',
-    'auth/popup-closed-by-user': 'Pendaftaran dibatalkan.',
+    'auth/email-already-in-use': 'This email is already in use. Try signing in or use another email.',
+    'auth/invalid-email': 'Invalid email format.',
+    'auth/weak-password': 'Password is too weak. Use at least 6 characters.',
+    'auth/network-request-failed': 'Connection failed. Check your internet connection.',
+    'auth/too-many-requests': 'Too many attempts. Please try again later.',
+    'auth/popup-closed-by-user': 'Sign up cancelled.',
     'auth/cancelled-popup-request': null,
   };
-  return errors[code] || 'Terjadi kesalahan. Silakan coba lagi.';
+  return errors[code] || 'An error occurred. Silakan coba lagi.';
 }
 
 // ── Save user to Realtime Database ───────────────────────
@@ -683,7 +683,7 @@ async function saveUserData(user, displayName) {
       lastLogin: Date.now(),
     });
   } catch (e) {
-    console.warn('Gagal menyimpan data user ke Database:', e);
+    console.warn('Failed to save user data to Database:', e);
   }
 }
 
@@ -698,12 +698,12 @@ async function doRegister() {
 
   clearMessages();
 
-  if (!name) { showError('Masukkan nama lengkapmu.'); return; }
-  if (name.length < 2) { showError('Nama minimal 2 karakter.'); return; }
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Masukkan email yang valid.'); return; }
-  if (!password || password.length < 8) { showError('Kata sandi minimal 8 karakter.'); return; }
-  if (password !== confirm) { showError('Konfirmasi kata sandi tidak cocok.'); return; }
-  if (!terms) { showError('Kamu harus menyetujui syarat & ketentuan untuk mendaftar.'); return; }
+  if (!name) { showError('Please enter your full name.'); return; }
+  if (name.length < 2) { showError('Name must be at least 2 characters.'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Please enter a valid email.'); return; }
+  if (!password || password.length < 8) { showError('Password must be at least 8 characters.'); return; }
+  if (password !== confirm) { showError('Password confirmation does not match.'); return; }
+  if (!terms) { showError('You must agree to the terms & conditions to register.'); return; }
 
   setLoading(btn, true);
   try {
@@ -712,7 +712,7 @@ async function doRegister() {
     const { user } = await fn.createUserWithEmailAndPassword(auth, email, password);
     await fn.updateProfile(user, { displayName: name });
     await saveUserData(user, name);
-    showSuccess('Akun berhasil dibuat! Mengalihkan...');
+    showSuccess('Account created! Redirecting...');
     setTimeout(() => { window.location.href = 'vibexa.html'; }, 1000);
   } catch (err) {
     const msg = handleAuthError(err.code);
@@ -731,7 +731,7 @@ async function doGoogleRegister() {
     const provider = window._googleProvider;
     const { user } = await fn.signInWithPopup(auth, provider);
     await saveUserData(user, user.displayName);
-    showSuccess('Akun berhasil dibuat! Mengalihkan...');
+    showSuccess('Account created! Redirecting...');
     setTimeout(() => { window.location.href = 'vibexa.html'; }, 1000);
   } catch (err) {
     const msg = handleAuthError(err.code);
