@@ -70,12 +70,12 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
 .heart-btn:hover,.heart-btn.liked{color:var(--green)}
 .heart-btn svg{width:20px;height:20px}
 .play-count{font-size:.78rem;color:var(--sub);font-family:var(--fm)}
-.music-card{background:var(--card);border-radius:12px;padding:10px;border:1px solid var(--border);width:100%;height:100%;display:flex;flex-direction:column;text-align:center;overflow:hidden;position:relative;cursor:pointer;transition:border-color .2s}
-.music-card:hover{border-color:rgba(30,215,96,0.3)}
-.music-card img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:8px;margin-bottom:6px;background:var(--panel);display:block}
+.music-card{background:transparent;border-radius:0;padding:0;border:none;width:100%;height:100%;display:flex;flex-direction:column;text-align:center;overflow:hidden;position:relative;cursor:pointer}
+.music-card:hover{}
+.music-card img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:8px;margin-bottom:5px;background:var(--panel);display:block}
 .mc-title{font-size:.72rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
 .mc-artist{font-size:.65rem;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:3px;justify-content:center}
-.mc-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);border-radius:12px;opacity:0;transition:opacity .2s}
+.mc-play-overlay{position:absolute;top:0;left:0;right:0;bottom:22px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);border-radius:8px;opacity:0;transition:opacity .2s}
 .music-card:hover .mc-play-overlay{opacity:1}
 .mc-play-icon{width:40px;height:40px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(30,215,96,0.4)}
 .mc-play-icon svg{width:16px;height:16px;color:#000;margin-left:2px}
