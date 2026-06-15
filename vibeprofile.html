@@ -944,7 +944,7 @@ window.onYouTubeIframeAPIReady=function(){
   window._ytApiReady=true;
   if(window._pendingVideoId){_createYTPlayer(window._pendingVideoId);window._pendingVideoId=null;}
 };
-function _createYTPlayer(videoId){
+function _createYTPlayer(videoId, expectedToken){
   if(YTP){try{YTP.destroy();}catch(e){} YTP=null;}
   let wrap=document.getElementById('yt-player-wrap');
   if(!wrap){wrap=document.createElement('div');wrap.id='yt-player-wrap';wrap.style.cssText='position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px';document.body.appendChild(wrap);}
@@ -953,8 +953,9 @@ function _createYTPlayer(videoId){
     width:'1',height:'1',videoId,
     playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,modestbranding:1},
     events:{
-      onReady(e){ e.target.setVolume(80); e.target.playVideo(); },
+      onReady(e){ if(expectedToken!==_playToken)return; e.target.setVolume(80); e.target.playVideo(); },
       onStateChange(e){
+        if(expectedToken!==_playToken)return;
         if(e.data===YT.PlayerState.PLAYING){
           isPlaying=true;
           updatePlayerUIPlaying();
@@ -965,14 +966,14 @@ function _createYTPlayer(videoId){
           isPlaying=false; cancelAnimationFrame(raf); nextTrack();
         }
       },
-      onError(e){ toast('⚠ Video could not be played, try another song'); }
+      onError(e){ if(expectedToken!==_playToken)return; toast('⚠ Video could not be played, try another song'); }
     }
   });
 }
-function initYTPlayer(videoId){
+function initYTPlayer(videoId, token){
   if(!videoId) return Promise.resolve();
   return new Promise(resolve=>{
-    if(window._ytApiReady&&window.YT&&window.YT.Player){_createYTPlayer(videoId);resolve();}
+    if(window._ytApiReady&&window.YT&&window.YT.Player){_createYTPlayer(videoId, token);resolve();}
     else{window._pendingVideoId=videoId;const check=setInterval(()=>{if(window._ytApiReady){clearInterval(check);resolve();}},100);}
   });
 }
@@ -1020,7 +1021,7 @@ async function playTrackAtIndex(idx){
   if(token !== _playToken) return;
 
   if(videoId){
-    await initYTPlayer(videoId).catch(()=>toast('⚠ Failed to load video'));
+    await initYTPlayer(videoId, token).catch(()=>toast('⚠ Failed to load video'));
     if(token !== _playToken) return;
     toast('▶ '+(title||'song'));
   } else {
