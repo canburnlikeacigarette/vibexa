@@ -1635,8 +1635,7 @@ document.addEventListener('touchmove',e=>{
   }
 },{passive:false});
 document.addEventListener('mouseup',()=>{
-  if(_mode==='rotate'&&_active) saveWidgetState(_active);
-  if(_mode==='resize'&&_active) saveWidgetState(_active);
+  if((_mode==='rotate'||_mode==='resize'||_mode==='drag')&&_active) saveWidgetState(_active);
   _mode=null;_active=null;_axisLock=null;
 });
 document.addEventListener('touchend',e=>{
@@ -1644,8 +1643,7 @@ document.addEventListener('touchend',e=>{
   // If going from 2 fingers to 1 or 0: end pinch
   if(e.touches.length < 2){ _pinchActive=false; _pinchEl=null; }
   if(e.touches.length === 0){
-    if(_mode==='rotate'&&_active) saveWidgetState(_active);
-    if(_mode==='resize'&&_active) saveWidgetState(_active);
+    if((_mode==='rotate'||_mode==='resize'||_mode==='drag')&&_active) saveWidgetState(_active);
     _mode=null;_active=null;_axisLock=null;
   }
 });
@@ -1703,7 +1701,7 @@ function saveWidgetState(el){
 
   if(el.dataset.hwKey){
     hwState[el.dataset.hwKey]={x:px,y:py,w:pw,h:ph,rotation,pct};
-    localStorage.setItem('sp_hw',JSON.stringify(hwState));
+    try{ localStorage.setItem('sp_hw',JSON.stringify(hwState)); }catch(e){ _warnSaveFailed(e); }
   }
   if(!el.dataset.hwKey){
     const idx=elData.findIndex(d=>d.id===wid);
@@ -1712,9 +1710,16 @@ function saveWidgetState(el){
       elData[idx].w=pw;elData[idx].h=ph;
       elData[idx].rotation=rotation;
       elData[idx].pct=pct;
-      localStorage.setItem('sp_els',JSON.stringify(elData));
+      try{ localStorage.setItem('sp_els',JSON.stringify(elData)); }catch(e){ _warnSaveFailed(e); }
     }
   }
+}
+let _saveFailWarned=false;
+function _warnSaveFailed(e){
+  console.error('[saveWidgetState] Gagal menyimpan posisi ke localStorage:', e);
+  if(_saveFailWarned) return;
+  _saveFailWarned=true;
+  toast('⚠ Penyimpanan posisi penuh (kuota browser). Hapus beberapa foto/sticker agar posisi tersimpan.');
 }
 
 // ── HEADER WIDGETS ──
