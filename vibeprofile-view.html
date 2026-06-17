@@ -171,6 +171,7 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
 .mp-btn{background:none;border:none;color:var(--sub);cursor:pointer;padding:5px;border-radius:8px;transition:all .18s;display:flex;align-items:center;justify-content:center}
 .mp-btn:hover{color:var(--green);background:var(--green-dim)}
 .mp-btn svg{width:16px;height:16px}
+.mp-close:hover{color:#ff5c5c;background:rgba(255,92,92,0.1)}
 .mp-play{width:34px;height:34px;background:var(--green);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 12px rgba(30,215,96,0.4)}
 .mp-play:hover{transform:scale(1.08)}
 .mp-play svg{width:14px;height:14px;color:#000;margin-left:1px}
@@ -362,6 +363,9 @@ body{font-family:var(--f);background:#111;color:var(--text);min-height:100vh;ove
         <svg id="mp-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
         <svg id="mp-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
       </button>
+      <button class="mp-close mp-btn" id="mp-close-btn" onclick="_stopPlayback()" title="Tutup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
     </div>
   </div>
   <div class="mp-progress-wrap">
@@ -484,6 +488,15 @@ function applyZoneScale() {
 function renderSnapshot(snapshot, sid) {
   document.getElementById('loading').style.display = 'none';
 
+  // ✅ Simpan ownerUid VibeProfile ini secara global supaya bisa dibandingkan
+  // dengan UID viewer begitu status Firebase Auth selesai diketahui.
+  window._profileOwnerUid = snapshot.ownerUid || null;
+  // Jika auth viewer sudah lebih dulu resolve sebelum snapshot ini dimuat,
+  // tentukan status owner sekarang juga.
+  if (window._viewerAuthUid !== undefined) {
+    window._isProfileOwner = !!(window._viewerAuthUid && window._profileOwnerUid && window._viewerAuthUid === window._profileOwnerUid);
+  }
+
   const title = snapshot.info?.name || 'VibeProfile';
   document.title = title + ' — Vibexa';
   document.getElementById('page-owner-label').textContent = title + "'s VibeProfile";
@@ -550,9 +563,13 @@ function renderSnapshot(snapshot, sid) {
       if (elData.type === 'ask') {
         div.style.position = 'absolute';
         div.style.height = 'auto';
-        div.innerHTML = _buildAskForm(elData.theme || 'yellow');
+        // ✅ Render dulu tanpa color picker (default aman untuk pengunjung).
+        // Jika viewer ternyata pemilik (UID cocok dengan ownerUid), color
+        // picker akan disuntikkan otomatis begitu status auth diketahui
+        // lewat _applyOwnerStateToAskWidgets().
+        div.innerHTML = _buildAskForm(elData.theme || 'yellow', false);
         fz.appendChild(div);
-        _initAskForm(div, snapshot.ownerUid, sid);
+        _initAskForm(div, snapshot.ownerUid, sid, elData.theme || 'yellow');
         maxBottom = Math.max(maxBottom, top + 260);
         return; // skip further handlers
       }
@@ -690,7 +707,7 @@ const ASK_THEMES = {
   }
 };
 
-function _buildAskForm(themeKey) {
+function _buildAskForm(themeKey, isOwner) {
   const t = ASK_THEMES[themeKey] || ASK_THEMES.yellow;
   const colorDots = Object.entries(ASK_THEMES).map(([k, th]) => {
     const hdrColor = th.headerBg.includes('gradient') ? th.border : th.headerBg;
@@ -698,11 +715,17 @@ function _buildAskForm(themeKey) {
     return `<button onclick="askChangeTheme(this,'${k}')" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:${hdrColor};cursor:pointer;flex-shrink:0;transition:all .15s;${sel}" title="${k}"></button>`;
   }).join('');
 
+  // ✅ Color picker hanya dirender untuk pemilik VibeProfile. Pengunjung lain
+  // tidak akan melihat/bisa mengklik tombol ganti warna sama sekali.
+  const colorPickerHtml = isOwner
+    ? `<div class="ask-widget-colors" style="display:flex;gap:5px;align-items:center;margin-top:5px;flex-wrap:wrap;">${colorDots}</div>`
+    : '';
+
   return `
-    <div class="ask-widget-card" data-theme="${themeKey||'yellow'}" style="border-color:${t.border};box-shadow:0 8px 32px ${t.shadow},0 2px 8px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.15);">
+    <div class="ask-widget-card" data-theme="${themeKey||'yellow'}" data-owner-only="${isOwner ? '1' : '0'}" style="border-color:${t.border};box-shadow:0 8px 32px ${t.shadow},0 2px 8px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.15);">
       <div class="ask-widget-header" style="background:${t.headerBg};border-bottom:2px solid ${t.headerBorder};">
         <div class="ask-widget-title" style="color:${t.titleColor};">Ask me something</div>
-        <div style="display:flex;gap:5px;align-items:center;margin-top:5px;flex-wrap:wrap;">${colorDots}</div>
+        ${colorPickerHtml}
         <div class="ask-widget-xbtn" style="background:${t.xbtnBg};color:${t.titleColor};"></div>
       </div>
       <div class="ask-widget-body" style="background:${t.bodyBg};">
@@ -727,6 +750,10 @@ function _buildAskForm(themeKey) {
 function askChangeTheme(btn, themeKey) {
   const card = btn.closest('.ask-widget-card');
   if (!card) return;
+  // ✅ Guard tambahan: hanya pemilik VibeProfile yang boleh mengganti warna.
+  // Tombolnya memang tidak dirender untuk non-owner, tapi cek ini mencegah
+  // perubahan via console/devtools oleh pengunjung lain.
+  if (card.dataset.ownerOnly !== '1' || !window._isProfileOwner) return;
   const t = ASK_THEMES[themeKey] || ASK_THEMES.yellow;
   card.dataset.theme = themeKey;
   // Update border & shadow
@@ -832,10 +859,28 @@ function askSendAnother(btn) {
   askOnInput(ta);
 }
 
-function _initAskForm(div, ownerUid, sid) {
+function _initAskForm(div, ownerUid, sid, themeKey) {
   div.dataset.sid = sid || '';
+  div.dataset.themeKey = themeKey || 'yellow';
   window._currentSid = sid || '';
   window._currentOwnerUid = ownerUid || null;
+  // Daftarkan widget ini supaya bisa di-render-ulang saat status owner sudah diketahui
+  window._askWidgets = window._askWidgets || [];
+  window._askWidgets.push(div);
+  // Jika status owner sudah diketahui (auth sudah resolve sebelum widget ini dibuat), terapkan langsung
+  if (window._isProfileOwner === true) _applyOwnerStateToAskWidgets();
+}
+
+// ✅ Dipanggil setelah Firebase Auth selesai resolve. Membandingkan UID
+// viewer saat ini dengan ownerUid milik VibeProfile yang sedang dilihat.
+// Hanya jika cocok, color picker tema akan ditampilkan ulang.
+function _applyOwnerStateToAskWidgets() {
+  const widgets = window._askWidgets || [];
+  widgets.forEach(div => {
+    if (!div.isConnected) return;
+    const themeKey = div.dataset.themeKey || 'yellow';
+    div.innerHTML = _buildAskForm(themeKey, window._isProfileOwner === true);
+  });
 }
 
 // ── MINI PLAYER ─────────────────────────────────────────────────────────────
@@ -989,7 +1034,33 @@ async function _playIdx(idx) {
 }
 
 function _nextTrack() {
-  if (_queueIdx < _queue.length - 1) _playIdx(_queueIdx + 1);
+  if (_queueIdx < _queue.length - 1) {
+    _playIdx(_queueIdx + 1);
+  } else {
+    // ✅ Lagu terakhir di queue sudah selesai dan tidak ada lagu berikutnya
+    // — hentikan playback dan sembunyikan kotak mini player otomatis.
+    _stopPlayback();
+  }
+}
+
+// ✅ Menghentikan playback sepenuhnya dan menyembunyikan mini player.
+// Dipanggil otomatis saat lagu terakhir selesai, atau manual lewat tombol close.
+function _stopPlayback() {
+  cancelAnimationFrame(_raf);
+  if (_YTP) {
+    try { _YTP.stopVideo(); _YTP.destroy(); } catch(e) {}
+    _YTP = null;
+  }
+  const audio = document.getElementById('sp-audio-fb');
+  if (audio) { audio.pause(); audio.src = ''; }
+  _isPlaying = false;
+  _queue = [];
+  _queueIdx = -1;
+  document.getElementById('mini-player').classList.remove('visible');
+  document.getElementById('mp-bar').style.width = '0%';
+  document.getElementById('mp-current').textContent = '0:00';
+  document.getElementById('mp-duration').textContent = '0:00';
+  _syncBigPlayBtn();
 }
 
 // ✅ Function called by the play button in the playbar widget
@@ -1074,6 +1145,7 @@ function _showToast(msg) {
 <script type="module">
   import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
   import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+  import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCeMRU4JgIOlS_M9hgZfDKrkIHyAFncVjE",
@@ -1087,12 +1159,30 @@ function _showToast(msg) {
 
   const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
   const db = getDatabase(app);
+  const auth = getAuth(app);
 
   window._firebaseDb = db;
   window._fbFunctions = { ref, get, set };
 
   // ✅ Firebase sudah siap — langsung load halaman tanpa polling
   loadPage();
+
+  // ✅ Tentukan identitas viewer (sama seperti editor: anonymous auth per
+  // browser/device). Dipakai HANYA untuk menentukan apakah viewer ini adalah
+  // pemilik VibeProfile, supaya color picker "Ask me something" hanya
+  // tampil/aktif untuk pemilik — bukan untuk pengunjung lain.
+  window._viewerAuthUid = undefined;
+  window._isProfileOwner = false;
+
+  onAuthStateChanged(auth, user => {
+    window._viewerAuthUid = user ? user.uid : null;
+    window._isProfileOwner = !!(window._viewerAuthUid && window._profileOwnerUid && window._viewerAuthUid === window._profileOwnerUid);
+    if (typeof _applyOwnerStateToAskWidgets === 'function') _applyOwnerStateToAskWidgets();
+  });
+
+  signInAnonymously(auth).catch(err => {
+    console.warn('Anonymous sign-in gagal:', err.message);
+  });
 </script>
 </body>
 </html>
