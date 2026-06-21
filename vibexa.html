@@ -1137,6 +1137,22 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 #fs-btn-play{width:52px;height:52px;background:#fff;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:1;}
 #fs-btn-play:hover{transform:scale(1.06);box-shadow:0 0 20px rgba(255,255,255,0.4)}
 #fs-btn-play svg{width:22px;height:22px;color:#000}
+
+/* ── Now-playing info (album art + title + artist), bottom-left of lyrics bar — Spotify style ── */
+#fs-bar-left{flex:0 0 264px;display:flex;align-items:center;gap:12px;min-width:0;}
+.fs-np-thumb,.fs-np-ph{width:56px;height:56px;border-radius:8px;object-fit:cover;background:rgba(255,255,255,0.08);flex-shrink:0;box-shadow:0 6px 18px rgba(0,0,0,0.45);}
+.fs-np-ph{display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.fs-np-info{min-width:0;}
+.fs-np-title{font-size:.92rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px;text-shadow:0 1px 6px rgba(0,0,0,.4);}
+.fs-np-artist{font-size:.78rem;font-weight:500;color:rgba(255,255,255,.68);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px;}
+#fs-bar-center{flex:1 1 0;display:flex;flex-direction:column;align-items:center;max-width:640px;margin:0 auto;min-width:0;}
+#fs-bar-center #fs-prog-wrap{width:100%;}
+#fs-bar-right{flex:0 0 264px;}
+#fs-bar{display:flex;align-items:center;gap:20px;}
+@media(max-width:1050px){
+  #fs-bar-left,#fs-bar-right{display:none;}
+  #fs-bar-center{max-width:100%;}
+}
 /* PURE LYRICS MODE (no controls) */
 #fs-lyr.pure-mode #fs-nav { opacity: 0; pointer-events: none; transition: opacity .4s; }
 #fs-lyr.pure-mode #fs-bar { opacity: 0; pointer-events: none; transition: opacity .4s; }
@@ -2643,6 +2659,14 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="lyr-empty" style="color:rgba(255,255,255,0.4)"><i></i>Memuat lirik...</div>
   </div>
   <div id="fs-bar">
+    <div id="fs-bar-left">
+      <div class="fs-np-ph" id="fs-np-thumb"></div>
+      <div class="fs-np-info">
+        <div class="fs-np-title" id="fs-np-title">—</div>
+        <div class="fs-np-artist" id="fs-np-artist">—</div>
+      </div>
+    </div>
+    <div id="fs-bar-center">
     <div id="fs-prog-wrap">
       <span class="fs-t" id="fs-t-cur">0:00</span>
       <div id="fs-prog-track"><div id="fs-prog-fill"></div></div>
@@ -2660,6 +2684,8 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="m6 18 8.5-6L6 6v12zm2-6 8.5 6V6L8 12z"/></svg>
       </button>
     </div>
+    </div>
+    <div id="fs-bar-right"></div>
   </div>
   <!-- Hint keluar pure mode -->
   <div id="pure-exit-hint" onclick="togglePureMode()"> &nbsp;Keluar mode penuh</div>
@@ -3987,6 +4013,7 @@ function _updateUIForTrack(track){
     document.getElementById('h-title').textContent = track.title;
     document.getElementById('h-artist').textContent = track.artist;
     setHeroImg(track);
+    setFSNowPlayingInfo(track);
     _setupMediaSession(track);
     if(currentPlaylistId) renderPlaylistView(currentPlaylistId);
     // Update lirik jika sudah ada di cache
@@ -4015,6 +4042,9 @@ async function loadPlay(track, fromPlId){
   setBarImg(track);
   document.getElementById('bar-title').textContent=track.title;
   document.getElementById('bar-artist').textContent=track.artist;
+
+  // Update now-playing info di pojok kiri bawah halaman lirik fullscreen
+  setFSNowPlayingInfo(track);
 
   // Lyrics panel reset
   document.getElementById('lyr-lines').innerHTML='<div class="lyr-empty"><i></i>Mencari & memuat songs...</div>';
@@ -4327,6 +4357,18 @@ function setBarImg(t){
   const src=t.photo||t.thumb; const el=document.getElementById('bar-thumb');
   if(src){el.outerHTML=`<img class="bar-thumb" id="bar-thumb" src="${esc(src)}" alt="" style="cursor:pointer" onclick="openFS()">`;}
   else if(el.tagName==='IMG'){el.outerHTML=`<div class="bar-ph" id="bar-thumb" style="cursor:pointer" onclick="openFS()"></div>`;}
+}
+function setFSNowPlayingImg(t){
+  const src=t.photo||t.thumb; const el=document.getElementById('fs-np-thumb');
+  if(!el) return;
+  if(src){el.outerHTML=`<img class="fs-np-thumb" id="fs-np-thumb" src="${esc(src)}" alt="">`;}
+  else if(el.tagName==='IMG'){el.outerHTML=`<div class="fs-np-ph" id="fs-np-thumb"></div>`;}
+}
+function setFSNowPlayingInfo(t){
+  if(!t) return;
+  setFSNowPlayingImg(t);
+  const elT=document.getElementById('fs-np-title'); if(elT) elT.textContent=t.title||'—';
+  const elA=document.getElementById('fs-np-artist'); if(elA) elA.textContent=t.artist||'—';
 }
 
 // ─── Controls ─────────────────────────────────────────────
@@ -4675,7 +4717,7 @@ initMobileNav();
 const FS_COLORS=['#0d2f6b','#0d1f4a','#1a2a6b','#0d3a5c','#0a1f52','#162b6b','#0d3052','#1a1a6b'];
 let _trackColorIdx=0;
 function pickFSColor(){_trackColorIdx++;const c=FS_COLORS[_trackColorIdx%FS_COLORS.length];document.getElementById('fs-lyr').style.background=c;document.getElementById('fs-bg').style.background=c;}
-function openFS(){if(!curTrack)return;document.getElementById('fs-lyr').classList.add('open');document.getElementById('fs-artist-name').textContent=curTrack.title;updateFSLyr();updateFSProg();updateFSPB(playing);}
+function openFS(){if(!curTrack)return;document.getElementById('fs-lyr').classList.add('open');document.getElementById('fs-artist-name').textContent=curTrack.title;setFSNowPlayingInfo(curTrack);updateFSLyr();updateFSProg();updateFSPB(playing);}
 function closeFS(){document.getElementById('fs-lyr').classList.remove('open');}
 function _fsInstHTML(){return'<span class="inst-notes"><span style="height:8px"></span><span style="height:18px"></span><span style="height:10px"></span><span style="height:20px"></span><span style="height:12px"></span></span><span class="inst-label"> Instrumental</span>';}
 function updateFSLyr(){
