@@ -3690,7 +3690,7 @@ function _armSongTimer(){
 
     // Cek state YTP jika tersedia (aman di background)
     const state = _ytSafe(()=> YTP ? YTP.getPlayerState() : -1, -1);
-    if(state === 2){ _nextGuarded = false; return; } // sedang pause, batalkan
+    if(state === 2){ return; } // sedang pause, batalkan (JANGAN reset _nextGuarded)
     if(state === 1){
       // Masih playing — gunakan wall-clock untuk cek posisi real
       // (YTP.getCurrentTime() bisa frozen saat tab background)
@@ -3701,15 +3701,15 @@ function _armSongTimer(){
       // Pilih posisi terbesar antara wall-clock dan YTP (salah satu bisa stuck)
       const bestPos = Math.max(posNowWall, ytCur);
       // Guard: jangan skip jika posisi masih sangat awal (< 10 detik dari mulai)
-      if(ytDur > 0 && bestPos < 10){ _nextGuarded = false; _armSongTimer(); return; }
+      if(ytDur > 0 && bestPos < 10){ _armSongTimer(); return; }
       if(ytDur > 0 && bestPos < ytDur - 8){
         // Lagu belum selesai (mis. user seek mundur), arm ulang
         cur = ytCur; tot = ytDur;
         _playStartWall = Date.now(); _playStartPos = bestPos;
-        _nextGuarded = false;
         _armSongTimer(); return;
       }
     }
+    // HANYA set _nextGuarded = true SETELAH semua cek selesai dan siap panggil playNext()
     _nextGuarded = true;
     playing=false; setPB(false); cancelAnimationFrame(raf); _stopBgInterval();
     playNext();
