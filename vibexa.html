@@ -3552,6 +3552,8 @@ function _createPlayer(videoId) {
       onStateChange(e){
         if(e.data===YT.PlayerState.PLAYING){
           playing=true; setPB(true);
+          // Songs baru sudah pasti berjalan — baru di sini guard boleh dilepas
+          _nextGuarded=false;
           try{
             const newDur = YTP.getDuration();
             const newCur = YTP.getCurrentTime();
@@ -3592,7 +3594,7 @@ function _createPlayer(videoId) {
           if(!_nextGuarded){ _nextGuarded=true; playNext(); }
         }
       },
-      onError(e){ if(e.data===101||e.data===150) toast(' Video diblokir, coba songs lain'); }
+      onError(e){ if(e.data===101||e.data===150) toast(' Video diblokir, coba songs lain'); _nextGuarded=false; }
     }
   });
 }
@@ -3690,7 +3692,7 @@ function _armSongTimer(){
 
     // Cek state YTP jika tersedia (aman di background)
     const state = _ytSafe(()=> YTP ? YTP.getPlayerState() : -1, -1);
-    if(state === 2){ return; } // sedang pause, batalkan (JANGAN reset _nextGuarded)
+    if(state === 2){ _nextGuarded = false; return; } // sedang pause, batalkan
     if(state === 1){
       // Masih playing — gunakan wall-clock untuk cek posisi real
       // (YTP.getCurrentTime() bisa frozen saat tab background)
@@ -3701,15 +3703,15 @@ function _armSongTimer(){
       // Pilih posisi terbesar antara wall-clock dan YTP (salah satu bisa stuck)
       const bestPos = Math.max(posNowWall, ytCur);
       // Guard: jangan skip jika posisi masih sangat awal (< 10 detik dari mulai)
-      if(ytDur > 0 && bestPos < 10){ _armSongTimer(); return; }
+      if(ytDur > 0 && bestPos < 10){ _nextGuarded = false; _armSongTimer(); return; }
       if(ytDur > 0 && bestPos < ytDur - 8){
         // Lagu belum selesai (mis. user seek mundur), arm ulang
         cur = ytCur; tot = ytDur;
         _playStartWall = Date.now(); _playStartPos = bestPos;
+        _nextGuarded = false;
         _armSongTimer(); return;
       }
     }
-    // HANYA set _nextGuarded = true SETELAH semua cek selesai dan siap panggil playNext()
     _nextGuarded = true;
     playing=false; setPB(false); cancelAnimationFrame(raf); _stopBgInterval();
     playNext();
@@ -3875,6 +3877,11 @@ function playNext(){
   const i = _qIdx();
   const next = curQueue[i===-1 ? 0 : (i+1) % curQueue.length];
   if(!next) return;
+  // Kunci guard selama proses pindah songs berlangsung — baru dilepas saat
+  // songs baru benar-benar PLAYING (lihat onStateChange) atau saat loading gagal.
+  // Ini mencegah trigger ganda (event ended asli + timer/interval fallback)
+  // yang nyaris bersamaan dan menyebabkan 1 songs ikut terlewat.
+  _nextGuarded = true;
 
   // Jika tab background DAN sudah ada cache → pakai loadVideoById (tanpa fetch!)
   if(document.hidden && _prefetchCache[next._query]){
@@ -3886,7 +3893,7 @@ function playNext(){
         cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer();
         playing=false; cur=0; tot=0;
         _playGen++;  // invalidasi timer songs sebelumnya
-        _nextGuarded=false; _pendingNext=false;
+        _pendingNext=false; // _nextGuarded TETAP true sampai PLAYING dikonfirmasi
         curTrack = next;
         lyrs = cached.lyrs || [];
         _curSpeedFactor = detectSpeedFactor(next.title);
@@ -3923,7 +3930,7 @@ function playNext(){
           cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer();
           playing=false; cur=0; tot=0;
           _playGen++;
-          _nextGuarded=false;
+          // _nextGuarded TETAP true sampai PLAYING dikonfirmasi (lihat onStateChange)
           curTrack = next;
           lyrs = lines || [];
           _curSpeedFactor = detectSpeedFactor(next.title);
@@ -3931,12 +3938,12 @@ function playNext(){
           YTP.loadVideoById({ videoId, suggestedQuality: 'small' });
           // Prefetch songs setelah ini
           setTimeout(_prefetchNext, 1000);
-        } catch(e){ _pendingNext = false; }
+        } catch(e){ _pendingNext = false; _nextGuarded = false; }
       }
       // Jika videoId tidak ditemukan, tandai pending agar dilanjut saat foreground
-      else { _pendingNext = true; }
+      else { _pendingNext = true; _nextGuarded = false; }
     }).catch(() => {
-      if(myGen === _playGen) _pendingNext = true;
+      if(myGen === _playGen){ _pendingNext = true; _nextGuarded = false; }
     });
     return;
   }
@@ -4024,7 +4031,10 @@ function _updateUIForTrack(track){
 async function loadPlay(track, fromPlId){
   _playGen++;  // invalidasi semua timer/guard dari songs sebelumnya
   cancelAnimationFrame(raf); _stopBgInterval(); _clearSongTimer(); playing=false; cur=0; tot=0; curTrack=track; lyrs=[];
-  _nextGuarded=false;
+  // Kunci guard selama proses load — dilepas saat PLAYING dikonfirmasi (onStateChange)
+  // atau saat loading gagal di bawah. Mencegah trigger auto-next ganda saat
+  // sedang menunggu video/lirik songs baru selesai dimuat.
+  _nextGuarded=true;
   _pendingNext=false;
   _playStartWall=0; _playStartPos=0;
   _ensureAudioCtx();
@@ -4075,12 +4085,12 @@ async function loadPlay(track, fromPlId){
   const [videoId,lines]=await Promise.all([resolveVid(searchQ),fetchLyr(cl,track.artist)]);
   if(videoId){
     toast(' Memutar songs...');
-    await initPlayer(videoId).catch(e=>{console.error('initPlayer error:',e);toast(' Failed to load video, coba songs lain');});
+    await initPlayer(videoId).catch(e=>{console.error('initPlayer error:',e);toast(' Failed to load video, coba songs lain');_nextGuarded=false;});
   }else{
     toast(' Mencoba fallback...');
     const fallbackId=await resolveVid(`${track.artist} ${track.title}`);
-    if(fallbackId){ await initPlayer(fallbackId).catch(()=>toast(' Failed to load video')); }
-    else{ toast(' Video tidak ditemukan. Coba songs lain.'); }
+    if(fallbackId){ await initPlayer(fallbackId).catch(()=>{toast(' Failed to load video');_nextGuarded=false;}); }
+    else{ toast(' Video tidak ditemukan. Coba songs lain.'); _nextGuarded=false; }
   }
   lyrs=lines||[];
   // Set song key for translation
