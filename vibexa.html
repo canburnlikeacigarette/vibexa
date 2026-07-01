@@ -3973,7 +3973,7 @@ async function doSearch(){
   const grid=document.getElementById('res-grid');
   grid.innerHTML=Array(8).fill('<div class="sk-card"><div class="sk sk-img"></div><div class="sk sk-l" style="margin-top:8px"></div><div class="sk sk-l s"></div></div>').join('');
   try{
-    const url=`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=song&limit=70&country=ID`;
+    const url=`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=song&limit=200&country=ID`;
     const res=await fetch(url); if(!res.ok)throw new Error('iTunes tidak merespons ('+res.status+')');
     const data=await res.json(); const items=data.results||[];
     grid.innerHTML='';
